@@ -3,12 +3,16 @@ name = "nornir-pyntc"
 version = "0.0.1"
 description = "pyntc plugin for Nornir"
 authors = ["Network to Code, LLC <info@networktocode.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/networktocode-llc/nornir_pyntc"
+
+[tool.poetry.plugins."nornir.plugins.connections"]
+"pyntc" = "nornir_pyntc.connections:Pyntc"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-pydantic = {version = "^1.7.2", extras = ["dotenv"]}
-toml = "0.10.1"
-click = "*"
+pyntc = "^0.19.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
@@ -26,14 +30,6 @@ flake8 = "*"
 
 [tool.poetry.scripts]
 nornir_pyntc = 'nornir_pyntc.cli:main'
-
-[tool.nornir_pyntc]
-string_required = "some string"
-array_default = ["a", "b", "c"]
-url_default = "http://localhost"
-ip_address = "192.168.0.1"
-ip_network = "2001:db8:3c4d:15::/64"
-file = "README.md"
 
 
 [tool.black]
