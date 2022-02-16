@@ -30,7 +30,7 @@ class Pyntc:
         port: Optional[int],
         platform: Optional[str],
         extras: Optional[Dict[str, Any]] = None,
-        # configuration: Optional[Config] = None,
+        configuration: Optional[Config] = None,  # pylint: disable=unused-argument
     ) -> None:
         """Opens a Connection with Pyntc.
 
@@ -41,7 +41,7 @@ class Pyntc:
             port (Optional[int]): port to connect to.
             platform (Optional[str]): platform | device type.
             extras (Optional[Dict[str, Any]], optional): Extras for inventory item. Defaults to None.
-            # configuration (Optional[Config], optional): Additional configuration items. Defaults to None.
+            configuration (Optional[Config], optional): Additional configuration items. Defaults to None.
         """
         parameters = {
             "host": hostname,
