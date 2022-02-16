@@ -2,6 +2,7 @@
 
 from typing import Any, Dict, Optional
 
+from nornir.core.task import Config
 from pyntc import ntc_device
 
 CONNECTION_NAME = "pyntc"
