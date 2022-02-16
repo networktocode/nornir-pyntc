@@ -1,5 +1,4 @@
-
-from typing import Any
+"""Send a non-configuration command."""
 
 from nornir.core.task import Result, Task
 from nornir_pyntc.connections import CONNECTION_NAME
@@ -11,15 +10,9 @@ def pyntc_show(task: Task, command: str, raw_text: bool = False) -> Result:
     Args:
         command (str): The command to send to the device.
 
-    Keyword Args:
-        raw_text (bool): Whether to return raw text or structured data.
-
     Returns:
         The output of the show command, which could be raw text or structured data.
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
-    if raw_text:
-        result = pyntc_connection.show(command, raw_text=True)
-    else:
-        result = pyntc_connection.show(command, raw_text=False)
+    result = pyntc_connection.show(command, raw_text=raw_text)
     return Result(host=task.host, result=result)
