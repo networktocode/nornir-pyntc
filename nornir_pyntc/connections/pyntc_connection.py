@@ -2,7 +2,6 @@
 
 from typing import Any, Dict, Optional
 
-from nornir.core.configuration import Config
 from pyntc import ntc_device
 
 CONNECTION_NAME = "pyntc"
@@ -23,7 +22,7 @@ class Pyntc:
         extras: maps to argument passed to ``ntc_device``.
     """
 
-    def open(
+    def open(  # pylint: disable=too-many-arguments
         self,
         hostname: Optional[str],
         username: Optional[str],
@@ -31,7 +30,7 @@ class Pyntc:
         port: Optional[int],
         platform: Optional[str],
         extras: Optional[Dict[str, Any]] = None,
-        configuration: Optional[Config] = None,
+        # configuration: Optional[Config] = None,
     ) -> None:
         """Opens a Connection with Pyntc.
 
@@ -42,7 +41,7 @@ class Pyntc:
             port (Optional[int]): port to connect to.
             platform (Optional[str]): platform | device type.
             extras (Optional[Dict[str, Any]], optional): Extras for inventory item. Defaults to None.
-            configuration (Optional[Config], optional): Additional configuration items. Defaults to None.
+            # configuration (Optional[Config], optional): Additional configuration items. Defaults to None.
         """
         parameters = {
             "host": hostname,
@@ -58,7 +57,7 @@ class Pyntc:
         extras = extras or {}
         parameters.update(extras)
         connection = ntc_device(**parameters)
-        self.connection = connection
+        self.connection = connection  # pylint: disable=attribute-defined-outside-init
 
     def close(self) -> None:
         """Close the Pyntc connection."""

@@ -66,6 +66,7 @@ no-docstring-rgx="^(_|test_|Meta$)"
 disable = """,
     line-too-long,
     bad-continuation,
+    duplicate-code,
     """
 
 [tool.pylint.miscellaneous]
