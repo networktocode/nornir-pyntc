@@ -1,0 +1,19 @@
+---
+name: nornir_pyntc
+summary: |
+  Connection plugin and various tasks to interact with network equipment via `pyntc <https://github.com/networktocode/pyntc>`_.
+nornir_version: ~3
+categories:
+  - pyntc
+  - networking
+intro_file: README.md
+connection_plugins:
+  - nornir_pyntc.connections.Pyntc
+task_plugins:
+  - nornir_pyntc.tasks.pyntc_config
+  - nornir_pyntc.tasks.pyntc_file_copy
+  - nornir_pyntc.tasks.pyntc_install_os
+  - nornir_pyntc.tasks.pyntc_reboot
+  - nornir_pyntc.tasks.pyntc_save
+  - nornir_pyntc.tasks.pyntc_show_list
+  - nornir_pyntc.tasks.pyntc_show
