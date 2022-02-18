@@ -4,6 +4,7 @@ from typing import Any, Dict, Optional
 
 from nornir.core.configuration import Config
 from pyntc import ntc_device
+from pytest import param
 
 CONNECTION_NAME = "pyntc"
 
@@ -50,13 +51,14 @@ class Pyntc:
             "password": password,
             "port": port,
         }
-        print(parameters)
         if platform is not None:
             platform = napalm_to_pyntc_map.get(platform, platform)
             parameters["device_type"] = platform
-        print(parameters)
         extras = extras or {}
         parameters.update(extras)
+        if not parameters["port"]:
+            parameters["port"] = 22
+        print(parameters)
         connection = ntc_device(**parameters)
         self.connection = connection  # pylint: disable=attribute-defined-outside-init
 
