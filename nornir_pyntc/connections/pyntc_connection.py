@@ -50,11 +50,11 @@ class Pyntc:
             "password": password,
             "port": port,
         }
-
+        print(parameters)
         if platform is not None:
             platform = napalm_to_pyntc_map.get(platform, platform)
             parameters["device_type"] = platform
-
+        print(parameters)
         extras = extras or {}
         parameters.update(extras)
         connection = ntc_device(**parameters)
