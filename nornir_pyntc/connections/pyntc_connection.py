@@ -4,17 +4,15 @@ from typing import Any, Dict, Optional
 
 from nornir.core.configuration import Config
 from pyntc import ntc_device
-from pytest import param
 
 CONNECTION_NAME = "pyntc"
 
-napalm_to_pyntc_map = {
-    "ios": "cisco_ios_ssh",
-    "nxos": "cisco_nxos_nxapi",
-    "eos": "arista_eos_eapi",
-    "junos": "juniper_junos_netconf",
-    "iosxr": "cisco_xr",
+platform_to_pyntc_map = {
     "cisco_ios": "cisco_ios_ssh",
+    "cisco_nxos": "cisco_nxos_nxapi",
+    "arista_eos": "arista_eos_eapi",
+    "juniper_junos": "juniper_junos_netconf",
+    "cisco_iosxr": "cisco_xr",
 }
 
 
@@ -53,7 +51,7 @@ class Pyntc:
             "port": port,
         }
         if platform is not None:
-            platform = napalm_to_pyntc_map.get(platform, platform)
+            platform = platform_to_pyntc_map.get(platform, platform)
             parameters["device_type"] = platform
         extras = extras or {}
         parameters.update(extras)
