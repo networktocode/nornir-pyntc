@@ -32,6 +32,7 @@ class Pyntc:
         platform: Optional[str],
         extras: Optional[Dict[str, Any]] = None,
         configuration: Optional[Config] = None,  # pylint: disable=unused-argument
+        **kwargs
     ) -> None:
         """Opens a Connection with Pyntc.
 
@@ -57,8 +58,8 @@ class Pyntc:
         parameters.update(extras)
         if not parameters["port"]:
             parameters["port"] = 22
-        print(parameters)
-        connection = ntc_device(**parameters)
+        conn_args = {**parameters, **kwargs}
+        connection = ntc_device(**conn_args)
         self.connection = connection  # pylint: disable=attribute-defined-outside-init
 
     def close(self) -> None:
