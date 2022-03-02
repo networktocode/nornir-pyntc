@@ -9,8 +9,8 @@ from nornir_pyntc.connections import CONNECTION_NAME
 def pyntc_install_os(
     task: Task,
     image_name: str,
-    install_mode: bool = False,
-    install_mode_delay_factor: int = 20,
+    # install_mode: bool = False,
+    # install_mode_delay_factor: int = 20,
     **vendor_specifics: Any,
 ) -> Result:
     """Installs the prescribed Network OS, which must be present before issuing this command.
