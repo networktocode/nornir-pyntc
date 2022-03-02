@@ -14,6 +14,7 @@ napalm_to_pyntc_map = {
     "eos": "arista_eos_eapi",
     "junos": "juniper_junos_netconf",
     "iosxr": "cisco_xr",
+    "cisco_ios": "cisco_ios_ssh",
 }
 
 
