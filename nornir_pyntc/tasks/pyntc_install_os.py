@@ -26,5 +26,6 @@ def pyntc_install_os(
         bool: False if no install is needed, true if the install completes successfully
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
-    result = pyntc_connection.install_os(image_name, install_mode, install_mode_delay_factor, **vendor_specifics)
+    # result = pyntc_connection.install_os(image_name, install_mode, install_mode_delay_factor, **vendor_specifics)
+    result = pyntc_connection.install_os(image_name, **vendor_specifics)
     return Result(host=task.host, result=result)
