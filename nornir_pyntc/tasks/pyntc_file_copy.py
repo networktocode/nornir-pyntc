@@ -17,6 +17,6 @@ def pyntc_file_copy(task: Task, src: str, dest: Optional[str] = None, file_syste
     Returns:
         bool: True if save is successful.
     """
-    pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
-    result = pyntc_connection.file_copy(src=src, dest=dest, file_system=file_system, **kwargs)
+    pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config, **kwargs)
+    result = pyntc_connection.file_copy(src=src, dest=dest, file_system=file_system)
     return Result(host=task.host, result=result)
