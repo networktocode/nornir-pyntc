@@ -11,6 +11,7 @@ def pyntc_show(task: Task, command: str, **kwargs: Any) -> Result:
 
     Args:
         command (str): The command to send to the device.
+        kwargs (Any): Additional keyword args to send.
 
     Returns:
         The output of the show command, which could be raw text or structured data.
