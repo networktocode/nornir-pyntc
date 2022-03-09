@@ -30,6 +30,7 @@ class Pyntc:
         password: Optional[str],
         port: Optional[int],
         platform: Optional[str],
+        timeout: int = 30,
         extras: Optional[Dict[str, Any]] = None,
         configuration: Optional[Config] = None,  # pylint: disable=unused-argument
     ) -> None:
@@ -39,6 +40,7 @@ class Pyntc:
             hostname (Optional[str]): hostname or IP.
             username (Optional[str]): username to connect to the device.
             password (Optional[str]): password to connect to the device.
+            timeout (Optional[int]): timeout for the connection.
             port (Optional[int]): port to connect to.
             platform (Optional[str]): platform | device type.
             extras (Optional[Dict[str, Any]], optional): Extras for inventory item. Defaults to None.
@@ -48,6 +50,7 @@ class Pyntc:
             "host": hostname,
             "username": username,
             "password": password,
+            "timeout": timeout,
             "port": port,
         }
         if platform is not None:
