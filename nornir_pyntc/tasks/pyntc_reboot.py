@@ -20,3 +20,5 @@ def pyntc_reboot(task: Task, timer: int = 0) -> Result:
         pyntc_connection.reboot(timer=timer)
     except (ConnectionError, ReadTimeout):
         return Result(host=task.host, result="Connection Closed. Reboot In Progress.", failed=False)
+    except Exception as err:
+        return Result(host=task.host, result=err, failed=True)
