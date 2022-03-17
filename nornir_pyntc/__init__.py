@@ -1,5 +1,7 @@
 """Initialize."""
 
+__version__ = "0.0.1"
+
 from nornir_pyntc.connections import CONNECTION_NAME, Pyntc
 from nornir_pyntc.tasks import (
     pyntc_config,

@@ -13,6 +13,11 @@ platform_to_pyntc_map = {
     "arista_eos": "arista_eos_eapi",
     "juniper_junos": "juniper_junos_netconf",
     "cisco_iosxr": "cisco_xr",
+    "ios": "cisco_ios_ssh",
+    "nxos": "cisco_nxos_nxapi",
+    "eos": "arista_eos_eapi",
+    "junos": "juniper_junos_netconf",
+    "iosxr": "cisco_xr",
 }
 
 
@@ -28,8 +33,8 @@ class Pyntc:
         hostname: Optional[str],
         username: Optional[str],
         password: Optional[str],
-        port: Optional[int],
         platform: Optional[str],
+        port: int = 22,
         timeout: int = 30,
         extras: Optional[Dict[str, Any]] = None,
         configuration: Optional[Config] = None,  # pylint: disable=unused-argument
@@ -41,7 +46,7 @@ class Pyntc:
             username (Optional[str]): username to connect to the device.
             password (Optional[str]): password to connect to the device.
             timeout (Optional[int]): timeout for the connection.
-            port (Optional[int]): port to connect to.
+            port (Optional[int]): port to connect to. Defaults to 22(ssh).
             platform (Optional[str]): platform | device type.
             extras (Optional[Dict[str, Any]], optional): Extras for inventory item. Defaults to None.
             configuration (Optional[Config], optional): Additional configuration items. Defaults to None.
@@ -58,9 +63,6 @@ class Pyntc:
             parameters["device_type"] = platform
         extras = extras or {}
         parameters.update(extras)
-        if not parameters["port"]:
-            parameters["port"] = 22
-        #conn_args = {**parameters, **kwargs}
         connection = ntc_device(**parameters)
         self.connection = connection  # pylint: disable=attribute-defined-outside-init
 
