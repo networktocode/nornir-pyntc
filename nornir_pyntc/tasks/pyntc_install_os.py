@@ -4,6 +4,7 @@ from typing import Any
 
 from nornir.core.task import Result, Task
 from nornir_pyntc.connections import CONNECTION_NAME
+from requests.exceptions import ConnectionError, ReadTimeout
 
 
 def pyntc_install_os(
@@ -24,5 +25,9 @@ def pyntc_install_os(
         bool: False if no install is needed, true if the install completes successfully
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
-    result = pyntc_connection.install_os(image_name, **kwargs)
-    return Result(host=task.host, result=result)
+    try:
+        pyntc_connection.install_os(image_name, **kwargs)
+    except (ConnectionError, ReadTimeout):
+        return Result(host=task.host, result="Connection Closed. Install In Progress.", failed=False)
+    except Exception as err:
+        return Result(host=task.host, result=err, failed=True)
