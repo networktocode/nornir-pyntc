@@ -133,3 +133,10 @@ vvvv pyntc_show ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   'ucontroller_ver_str': 'v1.2.0.1'}
 ^^^^ END pyntc_show ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
+
+Questions
+---------
+
+For any questions or comments, please feel free to swing by the [networktocode slack channel](https://networktocode.slack.com).
+
+Sign up [here](http://slack.networktocode.com/)
