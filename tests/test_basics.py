@@ -1,5 +1,4 @@
 """Basic tests that do not require Django."""
-import os
 import unittest
 
 import toml
@@ -11,6 +10,5 @@ class TestVersion(unittest.TestCase):
 
     def test_version(self):
         """Verify that pyproject.toml version is same as version specified in the package."""
-        parent_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-        poetry_version = toml.load(os.path.join(parent_path, "pyproject.toml"))["tool"]["poetry"]["version"]
+        poetry_version = toml.load("./pyproject.toml")["tool"]["poetry"]["version"]
         self.assertEqual(project_version, poetry_version)

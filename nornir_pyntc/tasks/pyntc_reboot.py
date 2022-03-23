@@ -1,9 +1,10 @@
 """Reboot device."""
-
-# TODO: Fix currently fails with "ValueError: signal only works in main thread of the main interpreter'".  Signal is used by reboot method.
 from nornir.core.task import Result, Task
+from requests.exceptions import (  # pylint: disable=redefined-builtin
+    ConnectionError,
+    ReadTimeout,
+)
 from nornir_pyntc.connections import CONNECTION_NAME
-from requests.exceptions import ConnectionError, ReadTimeout
 
 
 def pyntc_reboot(task: Task, timer: int = 0) -> Result:
@@ -17,8 +18,9 @@ def pyntc_reboot(task: Task, timer: int = 0) -> Result:
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
     try:
-        pyntc_connection.reboot(timer=timer)
+        result = pyntc_connection.reboot(timer=timer)
+        return Result(host=task.host, result=result)
     except (ConnectionError, ReadTimeout):
         return Result(host=task.host, result="Connection Closed. Reboot In Progress.", failed=False)
-    except Exception as err:
+    except Exception as err:  # pylint: disable=broad-except
         return Result(host=task.host, result=err, failed=True)
