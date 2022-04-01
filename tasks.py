@@ -149,18 +149,6 @@ def bandit(context, local=INVOKE_LOCAL):
     run_cmd(context, exec_cmd, local)
 
 
-# @task
-# def unittest(context, label="nornir_pyntc"):
-#     """Run Django unit tests for the plugin.
-
-#     Args:
-#         context (obj): Used to run specific commands
-#         label (str): Specify a directory or module to test instead of running all tests.
-#     """
-#     command = f"nautobot-server test {label}"
-#     run_cmd(context, command)
-
-
 @task
 def cli(context):
     """Enter the image to perform troubleshooting or dev work."""
@@ -178,5 +166,4 @@ def tests(context, local=INVOKE_LOCAL):
     pydocstyle(context, local)
     bandit(context, local)
     pytest(context, local)
-    # unittest(context)
     print("All tests have passed!")

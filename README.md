@@ -1,14 +1,14 @@
 # nornir-pyntc
 
-Nornir-Pyntc is a [Nornir plugin](https://nornir.readthedocs.io/en/latest/plugins/index.html).  It comes with a `connection` plugin and some basic `task` definitions.  It extends the main functionality that [Pyntc](https://github.com/networktocode/pyntc) comes with and supports natively.
+Nornir-Pyntc is a [Nornir Plugin](https://nornir.readthedocs.io/en/latest/plugins/index.html).  It comes with a `connection` plugin and some basic `task` definitions.  It extends the main functionality that [Pyntc](https://github.com/networktocode/pyntc) comes with and supports natively.
 
 ## Connection Plugin
 
-A pyntc connection plugin allows nornir to manage connections with devices using pyntc connection methods.
+The Pyntc connection plugin allows Nornir to manage connections with devices using the Pyntc connection methods.
 
 ## Tasks
 
-This plugin comes with a few pre-built Nornir tasks that line up with the basic Pyntc functionality.
+This plugin comes with pre-built Nornir tasks that line up with the basic Pyntc functionality.
 
 - pyntc_config - Used to pass configuration commands to a network device.
 - pyntc_file_copy - Used to copy a file to a network device.
@@ -18,7 +18,7 @@ This plugin comes with a few pre-built Nornir tasks that line up with the basic 
 - pyntc_show - Can be used to send a singular `show` command to a network device.
 - pyntc_show_list - Same as pyntc_show but can send a list of commands.
 
-For detailed information on the Pyntc methods, view the pyntc [documentation](https://github.com/networktocode/pyntc).
+For detailed information on the Pyntc methods, view the [Pyntc documentation](https://github.com/networktocode/pyntc).
 
 ## Examples
 
