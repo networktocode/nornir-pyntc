@@ -12,7 +12,7 @@ repository = "https://github.com/networktocode-llc/nornir_pyntc"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-pyntc = "^0.19.0"
+pyntc = "^0.20.1"
 nornir = "^3.2.0"
 
 [tool.poetry.dev-dependencies]
