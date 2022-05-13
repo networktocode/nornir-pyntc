@@ -1,3 +1,5 @@
+"""Testing Fixtures Setup."""
+
 import os
 
 import pytest
@@ -8,7 +10,7 @@ global_data = GlobalState(dry_run=True)
 
 
 @pytest.fixture(scope="session", autouse=True)
-def nornir(request):
+def nr(request):  # pylint:disable=unused-argument
     """Initializes nornir."""
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -27,5 +29,6 @@ def nornir(request):
 
 @pytest.fixture(scope="function", autouse=True)
 def reset_data():
+    """Reset Data."""
     global_data.dry_run = True
     global_data.reset_failed_hosts()
