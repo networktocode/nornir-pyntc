@@ -14,8 +14,8 @@ def test_pyntc_show_list_nxos(nornir, monkeypatch):
     result = device.run(pyntc_show_list, commands=["show version", "show ip route"])
     assert len(result["router1"]) == 1
     assert result["router1"].result == ["version 1.1.1", "ip route fake"]
-    assert result["router1"].failed == False
-    assert result["router1"].changed == False
+    assert result["router1"].failed is False
+    assert result["router1"].changed is False
 
 
 def test_pyntc_show_list_ios(nornir, monkeypatch):
@@ -29,5 +29,5 @@ def test_pyntc_show_list_ios(nornir, monkeypatch):
     result = device.run(pyntc_show_list, commands=["show version", "show ip route"])
     assert len(result["router2"]) == 1
     assert result["router2"].result == ["version 1.1.1", "ip route fake"]
-    assert result["router2"].failed == False
-    assert result["router2"].changed == False
+    assert result["router2"].failed is False
+    assert result["router2"].changed is False

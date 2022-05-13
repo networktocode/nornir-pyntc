@@ -1,18 +1,18 @@
 ---
 router1:
-  hostname: 192.168.1.1
-  username: ntc
-  password: ntc123
+  hostname: "192.168.1.1"
+  username: "ntc"
+  password: "ntc123"
   platform: "cisco_nxos"
   connection_options:
     nornir_pyntc:
       extras:
-        transport: http
+        transport: "http"
         global_delay_factor: 2
 router2:
-  hostname: 192.168.1.2
-  username: ntc
-  password: ntc123
+  hostname: "192.168.1.2"
+  username: "ntc"
+  password: "ntc123"
   platform: "cisco_ios"
   port: "22"
   connection_options:

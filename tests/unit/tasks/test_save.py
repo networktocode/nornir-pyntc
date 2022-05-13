@@ -13,9 +13,9 @@ def test_pyntc_save_nxos(nornir, monkeypatch):
     device = nornir.filter(name="router1")
     result = device.run(pyntc_save)
     assert len(result["router1"]) == 1
-    assert result["router1"].result == True
-    assert result["router1"].failed == False
-    assert result["router1"].changed == False
+    assert result["router1"].result is True
+    assert result["router1"].failed is False
+    assert result["router1"].changed is False
 
 
 def test_pyntc_save_ios(nornir, monkeypatch):
@@ -28,6 +28,6 @@ def test_pyntc_save_ios(nornir, monkeypatch):
     device = nornir.filter(name="router2")
     result = device.run(pyntc_save)
     assert len(result["router2"]) == 1
-    assert result["router2"].result == False
-    assert result["router2"].failed == False
-    assert result["router2"].changed == False
+    assert result["router2"].result is False
+    assert result["router2"].failed is False
+    assert result["router2"].changed is False
