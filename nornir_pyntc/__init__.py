@@ -1,6 +1,6 @@
-"""Initialize."""
+"""Initialize Connection and Tasks."""
 
-__version__ = "0.0.1"
+__version__ = "1.0.0"
 
 from nornir_pyntc.connections import CONNECTION_NAME, Pyntc
 from nornir_pyntc.tasks import (

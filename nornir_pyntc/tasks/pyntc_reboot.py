@@ -1,10 +1,10 @@
 """Reboot device."""
 from nornir.core.task import Result, Task
+from nornir_pyntc.connections import CONNECTION_NAME
 from requests.exceptions import (  # pylint: disable=redefined-builtin
     ConnectionError,
     ReadTimeout,
 )
-from nornir_pyntc.connections import CONNECTION_NAME
 
 
 def pyntc_reboot(task: Task, timer: int = 0) -> Result:
@@ -13,8 +13,9 @@ def pyntc_reboot(task: Task, timer: int = 0) -> Result:
     Args:
         timer (int): The time to wait before reloading.
 
-    Raises:
-        ReloadTimeoutError: When the device is still unreachable after the timeout period.
+    Returns:
+        Result object with:
+            * (bool) - True if successful.
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
     try:

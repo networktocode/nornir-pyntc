@@ -1,13 +1,12 @@
 """Installs the prescribed Network OS."""
-
 from typing import Any
 
 from nornir.core.task import Result, Task
+from nornir_pyntc.connections import CONNECTION_NAME
 from requests.exceptions import (  # pylint: disable=redefined-builtin
     ConnectionError,
     ReadTimeout,
 )
-from nornir_pyntc.connections import CONNECTION_NAME
 
 
 def pyntc_install_os(
@@ -25,7 +24,10 @@ def pyntc_install_os(
         OSInstallError: Unable to install OS Error type
 
     Returns:
-        bool: False if no install is needed, true if the install completes successfully
+        Result object with:
+            * (bool) - False if no install is needed, true if the install completes successfully
+            * (successful Result) - if the expected ConnectionError, or ReadTimeout expection is hit.
+            * (failed Result) - if any other exception is hit.
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
     try:

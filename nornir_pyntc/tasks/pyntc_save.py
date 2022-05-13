@@ -1,5 +1,4 @@
 """Save a device's running configuration."""
-
 from typing import Any
 
 from nornir.core.task import Result, Task
@@ -12,7 +11,8 @@ def pyntc_save(task: Task, **kwargs: Any) -> Result:
     kwargs: Additional keyword args.
 
     Returns:
-        bool: True if save is successful.
+        Result object with:
+            * bool: True if save is successful.
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
     result = pyntc_connection.save(**kwargs)

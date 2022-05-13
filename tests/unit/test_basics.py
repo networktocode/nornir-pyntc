@@ -1,7 +1,7 @@
 """Basic tests that do not require Django."""
 import unittest
 
-import toml
+import toml  # type: ignore
 from nornir_pyntc import __version__ as project_version
 
 
