@@ -38,5 +38,3 @@ def pyntc_install_os(
         return Result(host=task.host, result=result, changed=False, failed=False)
     except (ConnectionError, ReadTimeout):
         return Result(host=task.host, result="Connection Closed. Install In Progress.", changed=True, failed=False)
-    # except Exception as err:  # pylint: disable=broad-except
-    #     return Result(host=task.host, result=err, changed=False, failed=True)
