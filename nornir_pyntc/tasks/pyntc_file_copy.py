@@ -18,4 +18,6 @@ def pyntc_file_copy(task: Task, src: str, **kwargs: Any) -> Result:
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
     result = pyntc_connection.file_copy(src=src, **kwargs)
-    return Result(host=task.host, result=result)
+    if result:
+        return Result(host=task.host, result=result, changed=True)
+    return Result(host=task.host, result=result, changed=False)

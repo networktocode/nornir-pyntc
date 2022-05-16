@@ -18,4 +18,4 @@ def pyntc_show(task: Task, command: str, **kwargs: Any) -> Result:
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
     result = pyntc_connection.show(command, **kwargs)
-    return Result(host=task.host, result=result)
+    return Result(host=task.host, result=result, changed=False)

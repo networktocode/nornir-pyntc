@@ -16,4 +16,6 @@ def pyntc_save(task: Task, **kwargs: Any) -> Result:
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
     result = pyntc_connection.save(**kwargs)
-    return Result(host=task.host, result=result)
+    if result:
+        return Result(host=task.host, result=result, changed=True)
+    return Result(host=task.host, result=result, changed=False)

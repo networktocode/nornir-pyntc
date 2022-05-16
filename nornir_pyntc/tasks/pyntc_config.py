@@ -17,4 +17,4 @@ def pyntc_config(task: Task, commands: List[str]) -> Result:
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
     result = pyntc_connection.config(command=commands)
-    return Result(host=task.host, result=result)
+    return Result(host=task.host, result=result, changed=True)

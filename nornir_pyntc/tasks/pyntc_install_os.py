@@ -2,11 +2,12 @@
 from typing import Any
 
 from nornir.core.task import Result, Task
-from nornir_pyntc.connections import CONNECTION_NAME
 from requests.exceptions import (  # pylint: disable=redefined-builtin
     ConnectionError,
     ReadTimeout,
 )
+
+from nornir_pyntc.connections import CONNECTION_NAME
 
 
 def pyntc_install_os(
@@ -32,8 +33,10 @@ def pyntc_install_os(
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
     try:
         result = pyntc_connection.install_os(image_name, **kwargs)
-        return Result(host=task.host, result=result)
+        if result:
+            return Result(host=task.host, result=result, changed=True, failed=False)
+        return Result(host=task.host, result=result, changed=False, failed=False)
     except (ConnectionError, ReadTimeout):
-        return Result(host=task.host, result="Connection Closed. Install In Progress.", failed=False)
-    except Exception as err:  # pylint: disable=broad-except
-        return Result(host=task.host, result=err, failed=True)
+        return Result(host=task.host, result="Connection Closed. Install In Progress.", changed=True, failed=False)
+    # except Exception as err:  # pylint: disable=broad-except
+    #     return Result(host=task.host, result=err, changed=False, failed=True)
