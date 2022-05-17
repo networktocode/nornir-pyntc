@@ -1,5 +1,4 @@
 """Send a non-configuration command."""
-
 from typing import Any
 
 from nornir.core.task import Result, Task
@@ -14,8 +13,9 @@ def pyntc_show(task: Task, command: str, **kwargs: Any) -> Result:
         kwargs (Any): Additional keyword args to send.
 
     Returns:
-        The output of the show command, which could be raw text or structured data.
+        Result object with:
+            * (str) - The output of the show command, which could be raw text or structured data.
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
     result = pyntc_connection.show(command, **kwargs)
-    return Result(host=task.host, result=result)
+    return Result(host=task.host, result=result, changed=False)
