@@ -2,23 +2,58 @@
 
 Nornir-Pyntc is a [Nornir Plugin](https://nornir.readthedocs.io/en/latest/plugins/index.html).  It comes with a `connection` plugin and some basic `task` definitions.  It extends the main functionality that [Pyntc](https://github.com/networktocode/pyntc) comes with and supports natively.
 
+| Przemek: Is it `nornir-pyntc` or `Nornir-pyntc`? `pyntc` project does not seem to have capitalized version of `pyntc` in the docs. I would suggest sticking to `nornir-pyntc`. Also, any references to `pyntc` should use lowercase only name.
+
+| Przemek: It's unclear from the above what is the purpose of this plugin. Does it wrap around `pyntc` library and enables use of its functionality inside of nornir?
+| Przemek: "It extends the main functionality that [Pyntc](https://github.com/networktocode/pyntc) comes with and supports natively." - This sounds like plugins extends `pyntc` and not nornir.
+
+| Przemek: Suggested edit: "nornir-pyntc is a collection of [Nornir plugins](https://nornir.readthedocs.io/en/latest/plugins/index.html). It extends nornir with the functionality provided by the [pyntc](https://github.com/networktocode/pyntc) library."
+
+| Przemek: Add `Installation` section.
+
+| Przemek: Would it be worth adding section listing out supported platforms?
+
 ## Connection Plugin
 
+| Przemek: I think header `## Plugins` and sub-headings `### Connections`, `### Tasks` might flow better.
+
 The Pyntc connection plugin allows Nornir to manage connections with devices using the Pyntc connection methods.
+
+| Przemek: Match structure and format (list) to the one used in tasks section.
+
+| Przemek: We say that `nornir-pyntc` is a nornir plugin and then we say there is the pyntc connection plugin. Would it make more sense to say that `nornir-pyntc` is a collection of connection and tasks plugins, instead of calling it a plugin itself?
 
 ## Tasks
 
 This plugin comes with pre-built Nornir tasks that line up with the basic Pyntc functionality.
 
+| Przemek: I think it would be helpful if task names were links leading directly to the corresponding pyntc methods. Also wrap the task names in code marks ``
+
+| Przemek: Perhaps changing to active voice and starting with the the verb conveying the action could be more intuitive.
+
 - pyntc_config - Used to pass configuration commands to a network device.
+| Przemek: - `pyntc_config`- Pass configuration commands to a network device.
 - pyntc_file_copy - Used to copy a file to a network device.
+| Przemek: - `pyntc_file_copy` - Copy a file to a network device.
 - pyntc_install_os - Used to install an operating system for an OS upgrade.
+| Przemek: - `pyntc_install_os` - Install an operating system.
 - pyntc_reboot - Used to reboot a network device.
+| Przemek: - `pyntc_reboot` - Reboot a network device.
 - pyntc_save - Used to save the running configuration of a network device.
+| Przemek: - `pyntc_save` - Save the running configuration of a network device.
 - pyntc_show - Can be used to send a singular `show` command to a network device.
+| Przemek: `pyntc_show` - Send a single `show` command to a network device.
 - pyntc_show_list - Same as pyntc_show but can send a list of commands.
+| Przemek: - `pyntc_show_list` - Send multiple `show` commands to a network device.
 
 For detailed information on the Pyntc methods, view the [Pyntc documentation](https://github.com/networktocode/pyntc).
+
+| Przemek: Add `Basic usage` that would incorporate example below. Explain:
+  How does one use the connection plugin? How do you register it?
+  How does one use tasks.
+
+| Przemek: Does the library need any configuration?
+
 
 ## Examples
 
@@ -140,3 +175,5 @@ Questions
 For any questions or comments, please feel free to swing by the [networktocode slack channel](https://networktocode.slack.com).
 
 Sign up [here](http://slack.networktocode.com/)
+
+| Przemek: Change `Questions` to a standard markdown header.
