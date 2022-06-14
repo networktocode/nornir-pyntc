@@ -1,8 +1,10 @@
 # nornir-pyntc
 
-nornir-pyntc is a [Nornir Plugin](https://nornir.readthedocs.io/en/latest/plugins/index.html). It extends the main functionality that Nornir implements by adding a plugin around [pyntc](https://github.com/networktocode/pyntc). nornir-pyntc in return comes with a `connection` plugin and some basic `task` definitions that can be used via the Nornir core library.
+nornir-pyntc is a [Nornir Plugin](https://nornir.readthedocs.io/en/latest/plugins/index.html). It extends the main functionality that Nornir provides by adding a plugin wrapping around [pyntc](https://github.com/networktocode/pyntc) library. nornir-pyntc comes with a `connection` plugin and `task` definitions that can be used via the Nornir core library.
 
 ## Installation
+
+nornir-pyntc is available as a Python package in PyPI and can be installed with pip:
 
 Initial install:
 
@@ -28,21 +30,24 @@ pip install nornir-pyntc --upgrade
 
 ## Plugins
 
-Nornir allows plugins to extend different functionality. These include:
+Nornir allows plugins to extend different functionality.
+
+These include:
+- Connections
 - Tasks
 - Inventory
 - Processors
 - Runners
 
-The `nornir-pyntc` is a collection of connection and tasks plugins.
+`nornir-pyntc` is a collection of connection and tasks plugins.
 
-### Connection
+### Connections
 
-- `pyntc_connection` - Manages connections with devices.
+- `pyntc_connection` - Manages device connections.
 
 ### Tasks
 
-The tasks plugin comes with pre-built tasks that implement the basic pyntc functionality.
+The plugin comes with tasks that expose the basic pyntc functionality.
 
 - [pyntc_config](https://github.com/networktocode/pyntc#config-commands) - Pass configuration commands to a network device.
 - [pyntc_file_copy](https://github.com/networktocode/pyntc#copying-files) - Copy a file to a network device.
@@ -55,14 +60,23 @@ The tasks plugin comes with pre-built tasks that implement the basic pyntc funct
 
 ## Basic Usage
 
-In the examples below, basic usage patterns for utilzing the connection and tasks this plugin offers will be demonstrated.
+Below examples demonstrate basic usage patterns for the plugin's connection and tasks.
 
 ### Connection Examples
 
+This example demonstrates how to use a manual connection handler.  The
+
 ```python
+# Base import that is required to Initialize the core Nornir handler.
 from nornir import InitNornir
+
+# Specific nornir-pytnc imports.
+# Connection plugin import
 from nornir_pyntc.connections.pyntc_connection import Pyntc
+# Task plugin import for running show commands.
 from nornir_pyntc.tasks.pyntc_show import pyntc_show
+
+# Nornir utility function to print results in a simplified way.
 from nornir_utils.plugins.functions import print_result
 
 nr = InitNornir(config_file="config.yml")
@@ -80,13 +94,21 @@ print_result(manual_result)
 
 ```
 
-For more details see the manually connection section in the [Nornir Documentation](https://nornir.readthedocs.io/en/latest/howto/handling_connections.html#Manually).
+For more details see the section on manual connection handling in the [Nornir Documentation](https://nornir.readthedocs.io/en/latest/howto/handling_connections.html#Manually).
 
 ### Task Examples
 
+This example illustrates how to use a task plugin and allow the task plugin to utilize the native nornir-pyntc connection
+
 ```python
+# Base import that is required to Initialize the core Nornir handler.
 from nornir import InitNornir
+
+# Specific nornir-pytnc imports.
+# Task plugin import for running show commands.
 from nornir_pyntc.tasks.pyntc_show import pyntc_show
+
+# Nornir utility function to print results in a simplified way.
 from nornir_utils.plugins.functions import print_result
 
 nr = InitNornir(config_file="config.yml")
