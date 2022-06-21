@@ -64,7 +64,7 @@ Below examples demonstrate basic usage patterns for the plugin's connection and 
 
 ### Connection Examples
 
-This example demonstrates how to use a manual connection handler.  The
+This example demonstrates how to use a manual connection handler. The code executes the `open_connection` and `close_connection` method calls manually.
 
 ```python
 # Base import that is required to Initialize the core Nornir handler.
@@ -98,7 +98,7 @@ For more details see the section on manual connection handling in the [Nornir Do
 
 ### Task Examples
 
-This example illustrates how to use a task plugin and allow the task plugin to utilize the native nornir-pyntc connection
+This example illustrates how to use a task plugin and allow the task plugin to utilize the native nornir-pyntc connection:
 
 ```python
 # Base import that is required to Initialize the core Nornir handler.
