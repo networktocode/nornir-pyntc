@@ -7,7 +7,7 @@
 
 # Overview
  
-Add an overview of your project.
+nornir-pyntc is a [Nornir Plugin](https://nornir.readthedocs.io/en/latest/plugins/index.html). It extends the main functionality that Nornir provides by adding a plugin wrapping around [pyntc](https://github.com/networktocode/pyntc) library. nornir-pyntc comes with a `connection` plugin and `task` definitions that can be used via the Nornir core library.
  
 # Contents
 
