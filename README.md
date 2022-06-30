@@ -1,30 +1,114 @@
 # nornir-pyntc
 
-Nornir-Pyntc is a [Nornir Plugin](https://nornir.readthedocs.io/en/latest/plugins/index.html).  It comes with a `connection` plugin and some basic `task` definitions.  It extends the main functionality that [Pyntc](https://github.com/networktocode/pyntc) comes with and supports natively.
+nornir-pyntc is a [Nornir Plugin](https://nornir.readthedocs.io/en/latest/plugins/index.html). It extends the main functionality that Nornir provides by adding a plugin wrapping around [pyntc](https://github.com/networktocode/pyntc) library. nornir-pyntc comes with a `connection` plugin and `task` definitions that can be used via the Nornir core library.
 
-## Connection Plugin
+## Installation
 
-The Pyntc connection plugin allows Nornir to manage connections with devices using the Pyntc connection methods.
+nornir-pyntc is available as a Python package in PyPI and can be installed with pip:
 
-## Tasks
+Initial install:
 
-This plugin comes with pre-built Nornir tasks that line up with the basic Pyntc functionality.
+```
+pip install nornir-pyntc
+```
 
-- pyntc_config - Used to pass configuration commands to a network device.
-- pyntc_file_copy - Used to copy a file to a network device.
-- pyntc_install_os - Used to install an operating system for an OS upgrade.
-- pyntc_reboot - Used to reboot a network device.
-- pyntc_save - Used to save the running configuration of a network device.
-- pyntc_show - Can be used to send a singular `show` command to a network device.
-- pyntc_show_list - Same as pyntc_show but can send a list of commands.
+To upgrade:
 
-For detailed information on the Pyntc methods, view the [Pyntc documentation](https://github.com/networktocode/pyntc).
+```
+pip install nornir-pyntc --upgrade
+```
 
-## Examples
+## Supported Platforms
+
+- Cisco AireOS - uses netmiko (SSH)
+- Cisco ASA - uses netmiko (SSH)
+- Cisco IOS platforms - uses netmiko (SSH)
+- Cisco NX-OS - uses pynxos (NX-API)
+- Arista EOS - uses pyeapi (eAPI)
+- Juniper Junos - uses PyEz (NETCONF)
+- F5 Networks - uses f5-sdk (ReST)
+
+## Plugins
+
+Nornir allows plugins to extend different functionality.
+
+These include:
+- Connections
+- Tasks
+- Inventory
+- Processors
+- Runners
+
+`nornir-pyntc` is a collection of connection and tasks plugins.
+
+### Connections
+
+- `pyntc_connection` - Manages device connections.
+
+### Tasks
+
+The plugin comes with tasks that expose the basic pyntc functionality.
+
+- [pyntc_config](https://github.com/networktocode/pyntc#config-commands) - Pass configuration commands to a network device.
+- [pyntc_file_copy](https://github.com/networktocode/pyntc#copying-files) - Copy a file to a network device.
+- [pyntc_install_os](https://github.com/networktocode/pyntc#installing-operating-systems) - Install an operating system.
+- [pyntc_reboot](https://github.com/networktocode/pyntc#reboot) - Reboot a network device.
+- [pyntc_save](https://github.com/networktocode/pyntc#save-configs) - Save the running configuration of a network device.
+- [pyntc_show](https://github.com/networktocode/pyntc#sending-show-commands) - Send a single `show` command to a network device.
+- [pyntc_show_list](https://github.com/networktocode/pyntc#sending-multiple-commands) - Send multiple `show` commands to a network device.
+
+
+## Basic Usage
+
+Below examples demonstrate basic usage patterns for the plugin's connection and tasks.
+
+### Connection Examples
+
+This example demonstrates how to use a manual connection handler. The code executes the `open_connection` and `close_connection` method calls manually.
 
 ```python
+# Base import that is required to Initialize the core Nornir handler.
 from nornir import InitNornir
+
+# Specific nornir-pytnc imports.
+# Connection plugin import
+from nornir_pyntc.connections.pyntc_connection import Pyntc
+# Task plugin import for running show commands.
 from nornir_pyntc.tasks.pyntc_show import pyntc_show
+
+# Nornir utility function to print results in a simplified way.
+from nornir_utils.plugins.functions import print_result
+
+nr = InitNornir(config_file="config.yml")
+
+def task_manages_connection_manually(task):
+    task.host.open_connection("pyntc", configuration=task.nornir.config)
+    result = nr.run(task=pyntc_show, command="show version")
+    task.host.close_connection("pyntc")
+
+manual_result = nr.run(
+    task=task_manages_connection_manually,
+)
+
+print_result(manual_result)
+
+```
+
+For more details see the section on manual connection handling in the [Nornir Documentation](https://nornir.readthedocs.io/en/latest/howto/handling_connections.html#Manually).
+
+### Task Examples
+
+This example illustrates how to use a task plugin and allow the task plugin to utilize the native nornir-pyntc connection:
+
+```python
+# Base import that is required to Initialize the core Nornir handler.
+from nornir import InitNornir
+
+# Specific nornir-pytnc imports.
+# Task plugin import for running show commands.
+from nornir_pyntc.tasks.pyntc_show import pyntc_show
+
+# Nornir utility function to print results in a simplified way.
 from nornir_utils.plugins.functions import print_result
 
 nr = InitNornir(config_file="config.yml")
@@ -134,8 +218,7 @@ vvvv pyntc_show ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 ^^^^ END pyntc_show ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
 
-Questions
----------
+## Questions
 
 For any questions or comments, please feel free to swing by the [networktocode slack channel](https://networktocode.slack.com).
 
