@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nornir-pyntc"
-version = "0.0.1"
+version = "1.0.0"
 description = "pyntc plugin for Nornir"
 authors = ["Network to Code, LLC <info@networktocode.com>"]
 license = "Apache-2.0"
@@ -12,7 +12,7 @@ repository = "https://github.com/networktocode-llc/nornir_pyntc"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-pyntc = "^0.19.0"
+pyntc = "^0.20.1"
 nornir = "^3.2.0"
 
 [tool.poetry.dev-dependencies]
@@ -28,10 +28,32 @@ bandit = "*"
 invoke = "*"
 toml = "*"
 flake8 = "*"
+mypy = "^0.950"
 
 [tool.poetry.scripts]
 nornir_pyntc = 'nornir_pyntc.cli:main'
 
+[tool.mypy]
+python_version = 3.7
+ignore_errors = false
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_decorators = true
+check_untyped_defs = true
+disallow_any_generics = true
+ignore_missing_imports = true
+strict_optional = true
+warn_unused_ignores = true
+warn_return_any = true
+warn_unused_configs = true
+warn_redundant_casts = true
+disallow_subclassing_any = true
+no_implicit_optional = true
+implicit_reexport = true
+strict_equality = true
+exclude = ["tests/", "tasks.py"]
+show_error_codes = true
 
 [tool.black]
 line-length = 120

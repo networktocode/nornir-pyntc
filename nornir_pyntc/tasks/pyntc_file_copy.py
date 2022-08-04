@@ -1,5 +1,4 @@
 """Copy file to device."""
-
 from typing import Any
 
 from nornir.core.task import Result, Task
@@ -14,8 +13,11 @@ def pyntc_file_copy(task: Task, src: str, **kwargs: Any) -> Result:
         kwargs (Any): Additional keyword args.
 
     Returns:
-        bool: True if save is successful.
+        Result object with:
+            * (bool): True if save is successful.
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
     result = pyntc_connection.file_copy(src=src, **kwargs)
-    return Result(host=task.host, result=result)
+    if result:
+        return Result(host=task.host, result=result, changed=True)
+    return Result(host=task.host, result=result, changed=False)
