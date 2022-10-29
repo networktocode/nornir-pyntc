@@ -1,10 +1,14 @@
 """Initialize Connection and Tasks."""
 
+<<<<<<< HEAD
 try:
     from importlib import metadata  # type: ignore[attr-defined]
 except ImportError:
     # Python version < 3.8
     import importlib_metadata as metadata  # type: ignore[no-redef]
+=======
+__version__ = "1.0.0"
+>>>>>>> main
 
 from nornir_pyntc.connections import CONNECTION_NAME, Pyntc
 from nornir_pyntc.tasks import (
