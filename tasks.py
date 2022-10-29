@@ -42,13 +42,14 @@ PWD = os.getcwd()
 INVOKE_LOCAL = is_truthy(os.getenv("INVOKE_LOCAL", False))  # pylint: disable=W1508
 
 
-def run_cmd(context, exec_cmd, local=INVOKE_LOCAL):
+def run_cmd(context, exec_cmd, local=INVOKE_LOCAL, port=None):
     """Wrapper to run the invoke task commands.
 
     Args:
         context ([invoke.task]): Invoke task object.
         exec_cmd ([str]): Command to run.
         local (bool): Define as `True` to execute locally
+        port (int): Used to serve local docs.
 
     Returns:
         result (obj): Contains Invoke result from running task.
@@ -58,7 +59,14 @@ def run_cmd(context, exec_cmd, local=INVOKE_LOCAL):
         result = context.run(exec_cmd, pty=True)
     else:
         print(f"DOCKER - Running command: {exec_cmd} container: {IMAGE_NAME}:{IMAGE_VER}")
-        result = context.run(f"docker run -it -v {PWD}:/local {IMAGE_NAME}:{IMAGE_VER} sh -c '{exec_cmd}'", pty=True)
+        if port:
+            result = context.run(
+                f"docker run -it -p {port} -v {PWD}:/local {IMAGE_NAME}:{IMAGE_VER} sh -c '{exec_cmd}'", pty=True
+            )
+        else:
+            result = context.run(
+                f"docker run -it -v {PWD}:/local {IMAGE_NAME}:{IMAGE_VER} sh -c '{exec_cmd}'", pty=True
+            )
 
     return result
 
@@ -149,6 +157,18 @@ def bandit(context, local=INVOKE_LOCAL):
     run_cmd(context, exec_cmd, local)
 
 
+@task(help={"local": "Run locally or within the Docker container"})
+def mypy(context, local=INVOKE_LOCAL):
+    """Run mypy to validate typing-hints.
+
+    Args:
+        context (obj): Used to run specific commands
+        local (bool): Define as `True` to execute locally
+    """
+    exec_cmd = "mypy ./nornir_pyntc"
+    run_cmd(context, exec_cmd, local)
+
+
 @task
 def cli(context):
     """Enter the image to perform troubleshooting or dev work."""
@@ -165,5 +185,13 @@ def tests(context, local=INVOKE_LOCAL):
     yamllint(context, local)
     pydocstyle(context, local)
     bandit(context, local)
+    mypy(context, local)
     pytest(context, local)
     print("All tests have passed!")
+
+
+@task
+def docs(context, local=INVOKE_LOCAL):
+    """Build and serve docs locally for development."""
+    exec_cmd = "mkdocs serve -v --dev-addr=0.0.0.0:8001"
+    run_cmd(context, exec_cmd, local, port="8001:8001")
