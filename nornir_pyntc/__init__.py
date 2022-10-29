@@ -1,6 +1,10 @@
 """Initialize Connection and Tasks."""
 
-__version__ = "1.0.0"
+try:
+    from importlib import metadata  # type: ignore[attr-defined]
+except ImportError:
+    # Python version < 3.8
+    import importlib_metadata as metadata  # type: ignore[no-redef]
 
 from nornir_pyntc.connections import CONNECTION_NAME, Pyntc
 from nornir_pyntc.tasks import (
@@ -12,6 +16,8 @@ from nornir_pyntc.tasks import (
     pyntc_show,
     pyntc_show_list,
 )
+
+__version__ = metadata.version(__name__)
 
 __all__ = (
     "Pyntc",
