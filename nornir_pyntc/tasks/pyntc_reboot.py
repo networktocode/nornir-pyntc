@@ -1,8 +1,8 @@
 """Reboot device."""
+from requests.exceptions import ConnectionError, ReadTimeout  # pylint: disable=redefined-builtin
 
 from nornir.core.task import Result, Task
 from nornir_pyntc.connections import CONNECTION_NAME
-from requests.exceptions import ConnectionError, ReadTimeout  # pylint: disable=redefined-builtin
 
 
 def pyntc_reboot(task: Task, wait_for_reload: bool = False) -> Result:
