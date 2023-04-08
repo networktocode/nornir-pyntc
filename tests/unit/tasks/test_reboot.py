@@ -9,7 +9,7 @@ from nornir_pyntc.tasks import pyntc_reboot
 
 
 def test_pyntc_reboot_nxos(nornir_conn, monkeypatch):
-    def mock_reboot(cls, timer):  # pylint:disable=unused-argument
+    def mock_reboot(cls, wait_for_reload):  # pylint:disable=unused-argument
         return True
 
     monkeypatch.setattr(NXOSDevice, "reboot", mock_reboot)
@@ -22,7 +22,7 @@ def test_pyntc_reboot_nxos(nornir_conn, monkeypatch):
 
 
 def test_pyntc_reboot_ios(nornir_conn, monkeypatch):
-    def mock_reboot(cls, timer):  # pylint:disable=unused-argument
+    def mock_reboot(cls, wait_for_reload):  # pylint:disable=unused-argument
         return False
 
     monkeypatch.setattr(IOSDevice, "reboot", mock_reboot)
@@ -35,7 +35,7 @@ def test_pyntc_reboot_ios(nornir_conn, monkeypatch):
 
 
 def test_pyntc_reboot_reboottimer_exception(nornir_conn, monkeypatch):
-    def mock_reboot(cls, timer):  # pylint:disable=unused-argument
+    def mock_reboot(cls, wait_for_reload):  # pylint:disable=unused-argument
         raise RebootTimeoutError(wait_time=10, hostname="router2")
 
     monkeypatch.setattr(IOSDevice, "reboot", mock_reboot)
@@ -48,7 +48,7 @@ def test_pyntc_reboot_reboottimer_exception(nornir_conn, monkeypatch):
 
 
 def test_pyntc_reboot_timeout_exception(nornir_conn, monkeypatch):
-    def mock_reboot(cls, timer):  # pylint:disable=unused-argument
+    def mock_reboot(cls, wait_for_reload):  # pylint:disable=unused-argument
         raise ReadTimeout
 
     monkeypatch.setattr(IOSDevice, "reboot", mock_reboot)
@@ -61,7 +61,7 @@ def test_pyntc_reboot_timeout_exception(nornir_conn, monkeypatch):
 
 
 def test_pyntc_reboot_other_exception(nornir_conn, monkeypatch):
-    def mock_reboot(cls, timer):  # pylint:disable=unused-argument
+    def mock_reboot(cls, wait_for_reload):  # pylint:disable=unused-argument
         raise ValueError
 
     monkeypatch.setattr(IOSDevice, "reboot", mock_reboot)
