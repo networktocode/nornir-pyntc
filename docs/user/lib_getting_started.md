@@ -29,8 +29,6 @@ The plugin comes with tasks that expose the basic pyntc functionality.
 - [pyntc_reboot](https://github.com/networktocode/pyntc#reboot) - Reboot a network device.
 - [pyntc_save](https://github.com/networktocode/pyntc#save-configs) - Save the running configuration of a network device.
 - [pyntc_show](https://github.com/networktocode/pyntc#sending-show-commands) - Send a single `show` command to a network device.
-- [pyntc_show_list](https://github.com/networktocode/pyntc#sending-multiple-commands) - Send multiple `show` commands to a network device.
-
 
 ## Basic Usage
 

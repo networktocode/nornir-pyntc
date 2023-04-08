@@ -9,7 +9,7 @@ def pyntc_config(task: Task, commands: List[str]) -> Result:
     """Send configuration command or commands.
 
     Args:
-        command (list): The commands to send to the device.
+        commands (list): The commands to send to the device.
 
     Returns:
         Result object with:
