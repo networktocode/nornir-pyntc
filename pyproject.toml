@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nornir-pyntc"
-version = "2.0.0"
+version = "3.0.0"
 description = "pyntc plugin for Nornir"
 authors = ["Network to Code, LLC <info@networktocode.com>"]
 license = "Apache-2.0"
@@ -11,8 +11,8 @@ repository = "https://github.com/networktocode-llc/nornir_pyntc"
 "pyntc" = "nornir_pyntc.connections:Pyntc"
 
 [tool.poetry.dependencies]
-python = "^3.7"
-pyntc = "^1.0.0"
+python = "^3.8"
+pyntc = "^2.0.0"
 nornir = "^3.2.0"
 
 [tool.poetry.dev-dependencies]
@@ -39,7 +39,7 @@ mkdocs-version-annotations = "1.0.0"
 nornir_pyntc = 'nornir_pyntc.cli:main'
 
 [tool.mypy]
-python_version = 3.7
+python_version = 3.8
 ignore_errors = false
 disallow_untyped_calls = true
 disallow_untyped_defs = true
@@ -62,7 +62,7 @@ show_error_codes = true
 
 [tool.black]
 line-length = 120
-target-version = ['py37']
+target-version = ['py38']
 include = '\.pyi?$'
 exclude = '''
 (
@@ -92,7 +92,6 @@ no-docstring-rgx="^(_|test_|Meta$)"
 # Pylint and Black disagree about how to format multi-line arrays; Black wins.
 disable = """,
     line-too-long,
-    bad-continuation,
     duplicate-code,
     """
 
