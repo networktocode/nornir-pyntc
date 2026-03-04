@@ -11,6 +11,7 @@ def pyntc_remote_file_copy(task: Task, src: FileCopyModel, **kwargs: Any) -> Res
     """Execute the file copy command on a remote device using the device's native copy command.
 
     Args:
+        task (Task): Nornir Task object.
         src (FileCopyModel): Source of file.
         kwargs (Any): Additional keyword args.
 
