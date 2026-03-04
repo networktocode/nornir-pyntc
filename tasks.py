@@ -1,7 +1,7 @@
 """Tasks for use with Invoke."""
+
 import os
 import sys
-from distutils.util import strtobool
 
 from invoke import task
 
@@ -17,21 +17,26 @@ def is_truthy(arg):
     Examples:
         >>> is_truthy('yes')
         True
-
     Args:
         arg (str): Truthy string (True values are y, yes, t, true, on and 1; false values are n, no,
         f, false, off and 0. Raises ValueError if val is anything else.
     """
     if isinstance(arg, bool):
         return arg
-    return bool(strtobool(arg))
+
+    val = str(arg).lower()
+    if val in ("y", "yes", "t", "true", "on", "1"):
+        return True
+    if val in ("n", "no", "f", "false", "off", "0"):
+        return False
+    raise ValueError(f"Invalid truthy value: `{arg}`")
 
 
 PYPROJECT_CONFIG = toml.load("pyproject.toml")
 TOOL_CONFIG = PYPROJECT_CONFIG["tool"]["poetry"]
 
 # Can be set to a separate Python version to be used for launching or building image
-PYTHON_VER = os.getenv("PYTHON_VER", "3.8")
+PYTHON_VER = os.getenv("PYTHON_VER", "3.10")
 # Name of the docker image/image
 IMAGE_NAME = os.getenv("IMAGE_NAME", TOOL_CONFIG["name"])
 # Tag for the image
@@ -61,11 +66,13 @@ def run_cmd(context, exec_cmd, local=INVOKE_LOCAL, port=None):
         print(f"DOCKER - Running command: {exec_cmd} container: {IMAGE_NAME}:{IMAGE_VER}")
         if port:
             result = context.run(
-                f"docker run -it -p {port} -v {PWD}:/local {IMAGE_NAME}:{IMAGE_VER} sh -c '{exec_cmd}'", pty=True
+                f"docker run -it -p {port} -v {PWD}:/local {IMAGE_NAME}:{IMAGE_VER} sh -c '{exec_cmd}'",
+                pty=True,
             )
         else:
             result = context.run(
-                f"docker run -it -v {PWD}:/local {IMAGE_NAME}:{IMAGE_VER} sh -c '{exec_cmd}'", pty=True
+                f"docker run -it -v {PWD}:/local {IMAGE_NAME}:{IMAGE_VER} sh -c '{exec_cmd}'",
+                pty=True,
             )
 
     return result

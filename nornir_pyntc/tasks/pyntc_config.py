@@ -1,4 +1,5 @@
 """Send configuration commands."""
+
 from typing import List
 
 from nornir.core.task import Result, Task
