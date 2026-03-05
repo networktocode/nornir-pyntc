@@ -10,6 +10,7 @@ def pyntc_check_file_exists(task: Task, filename: str, **kwargs: Any) -> Result:
     """Check if file exists on device.
 
     Args:
+        task (Task): Nornir Task object.
         filename (str): Name of the file.
         kwargs (Any): Additional keyword args.
 

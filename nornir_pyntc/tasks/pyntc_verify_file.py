@@ -16,6 +16,7 @@ def pyntc_verify_file(
     """Check if file exists on device and the checksum matches the provided value.
 
     Args:
+        task (Task): Nornir Task object.
         checksum (str): Expected checksum of the file.
         filename (str): Name of the file.
         hashing_algorithm (str): Hashing algorithm to use for checksum verification (default: "md5").
