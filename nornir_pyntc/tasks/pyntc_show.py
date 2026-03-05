@@ -1,4 +1,5 @@
 """Send a non-configuration command."""
+
 from typing import Any, Union
 
 from nornir.core.task import Result, Task

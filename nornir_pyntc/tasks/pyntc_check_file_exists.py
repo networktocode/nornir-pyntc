@@ -6,19 +6,18 @@ from nornir.core.task import Result, Task
 from nornir_pyntc.connections import CONNECTION_NAME
 
 
-def pyntc_file_copy(task: Task, src: str, **kwargs: Any) -> Result:
-    """Copy file to device.
+def pyntc_check_file_exists(task: Task, filename: str, **kwargs: Any) -> Result:
+    """Check if file exists on device.
 
     Args:
-        src (str): Source of file.
+        task (Task): Nornir Task object.
+        filename (str): Name of the file.
         kwargs (Any): Additional keyword args.
 
     Returns:
         Result object with:
-            * (bool): True if save is successful.
+            * (bool): True if file exists, False otherwise.
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
-    result = pyntc_connection.file_copy(src=src, **kwargs)
-    if result:
-        return Result(host=task.host, result=result, changed=True)
+    result = pyntc_connection.check_file_exists(filename, **kwargs)
     return Result(host=task.host, result=result, changed=False)
