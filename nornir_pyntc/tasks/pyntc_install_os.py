@@ -1,4 +1,5 @@
 """Installs the prescribed Network OS."""
+
 from typing import Any
 
 from nornir.core.task import Result, Task

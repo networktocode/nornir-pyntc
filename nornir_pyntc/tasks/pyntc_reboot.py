@@ -1,4 +1,5 @@
 """Reboot device."""
+
 from requests.exceptions import ConnectionError, ReadTimeout  # pylint: disable=redefined-builtin
 
 from nornir.core.task import Result, Task

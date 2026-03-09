@@ -23,12 +23,15 @@ These include:
 
 The plugin comes with tasks that expose the basic pyntc functionality.
 
-- [pyntc_config](https://github.com/networktocode/pyntc#config-commands) - Pass configuration commands to a network device.
-- [pyntc_file_copy](https://github.com/networktocode/pyntc#copying-files) - Copy a file to a network device.
-- [pyntc_install_os](https://github.com/networktocode/pyntc#installing-operating-systems) - Install an operating system.
-- [pyntc_reboot](https://github.com/networktocode/pyntc#reboot) - Reboot a network device.
-- [pyntc_save](https://github.com/networktocode/pyntc#save-configs) - Save the running configuration of a network device.
-- [pyntc_show](https://github.com/networktocode/pyntc#sending-show-commands) - Send a single `show` command to a network device.
+- [pyntc_config](https://pyntc.readthedocs.io/en/latest/user/lib_getting_started/#config-commands) - Pass configuration commands to a network device.
+- [pyntc_file_copy](https://pyntc.readthedocs.io/en/latest/user/lib_getting_started/#copying-files) - Copy a file to a network device.
+- [pyntc_remote_file_copy](https://pyntc.readthedocs.io/en/latest/user/lib_getting_started/#remote-file-copy-download-to-device) - Uses device copy command to retrieve a file.
+- [pyntc_install_os](https://pyntc.readthedocs.io/en/latest/user/lib_getting_started/#installing-operating-systems) - Install an operating system.
+- [pyntc_reboot](https://pyntc.readthedocs.io/en/latest/user/lib_getting_started/#reboot) - Reboot a network device.
+- [pyntc_save](https://pyntc.readthedocs.io/en/latest/user/lib_getting_started/#save-configss) - Save the running configuration of a network device.
+- [pyntc_show](https://pyntc.readthedocs.io/en/latest/user/lib_getting_started/#sending-show-commands) - Send a single `show` command to a network device.
+- pyntc_verify_file - Verify a file exists on the device and verify the checksum of the file.
+- pyntc_check_file_exists - Check if a file exists on the device.
 
 ## Basic Usage
 
