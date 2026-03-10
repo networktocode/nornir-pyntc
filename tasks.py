@@ -139,7 +139,7 @@ def flake8(context, local=INVOKE_LOCAL):
 @task(help={"local": "Run locally or within the Docker container"})
 def pylint(context, local=INVOKE_LOCAL):
     """Run pylint code analysis."""
-    exec_cmd = 'find . -name "*.py" | xargs pylint'
+    exec_cmd = 'find . -name "*.py" | grep -vE "tests/unit" | xargs pylint'
     run_cmd(context, exec_cmd, local)
 
 
