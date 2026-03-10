@@ -27,9 +27,7 @@ def test_pyntc_show_with_string_command(mock_task):
     command = "show version"
     result = pyntc_show(mock_task, command)
 
-    mock_task.host.get_connection.assert_called_once_with(
-        CONNECTION_NAME, mock_task.nornir.config
-    )
+    mock_task.host.get_connection.assert_called_once_with(CONNECTION_NAME, mock_task.nornir.config)
     mock_connection.show.assert_called_once_with(command)
     assert isinstance(result, Result)
     assert result.result == "show version output"
@@ -44,9 +42,7 @@ def test_pyntc_show_with_list_command(mock_task):
     command = ["show version", "show interfaces"]
     result = pyntc_show(mock_task, command)
 
-    mock_task.host.get_connection.assert_called_once_with(
-        CONNECTION_NAME, mock_task.nornir.config
-    )
+    mock_task.host.get_connection.assert_called_once_with(CONNECTION_NAME, mock_task.nornir.config)
     mock_connection.show.assert_called_once_with(command)
     assert isinstance(result, Result)
     assert result.result == ["output1", "output2"]
