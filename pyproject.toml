@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nornir-pyntc"
-version = "3.0.0"
+version = "3.1.1a0"
 description = "pyntc plugin for Nornir"
 authors = ["Network to Code, LLC <info@networktocode.com>"]
 license = "Apache-2.0"
