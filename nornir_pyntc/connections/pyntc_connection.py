@@ -3,6 +3,7 @@
 from typing import Any, Dict, Optional
 
 from nornir.core.configuration import Config
+
 from pyntc import ntc_device
 
 CONNECTION_NAME = "pyntc"
@@ -28,7 +29,7 @@ class Pyntc:
         extras: maps to argument passed to ``ntc_device``.
     """
 
-    def open(  # pylint: disable=too-many-arguments
+    def open(  # pylint: disable=too-many-positional-arguments,too-many-arguments
         self,
         hostname: Optional[str],
         username: Optional[str],
