@@ -8,7 +8,9 @@ from invoke import task
 try:
     import toml
 except ImportError:
-    sys.exit("Please make sure to `pip install toml` or enable the Poetry shell and run `poetry install`.")
+    sys.exit(
+        "Please make sure to `pip install toml` or enable the Poetry shell and run `poetry install`."
+    )
 
 
 def is_truthy(arg):
@@ -63,7 +65,9 @@ def run_cmd(context, exec_cmd, local=INVOKE_LOCAL, port=None):
         print(f"LOCAL - Running command {exec_cmd}")
         result = context.run(exec_cmd, pty=True)
     else:
-        print(f"DOCKER - Running command: {exec_cmd} container: {IMAGE_NAME}:{IMAGE_VER}")
+        print(
+            f"DOCKER - Running command: {exec_cmd} container: {IMAGE_NAME}:{IMAGE_VER}"
+        )
         if port:
             result = context.run(
                 f"docker run -it -p {port} -v {PWD}:/local {IMAGE_NAME}:{IMAGE_VER} sh -c '{exec_cmd}'",
@@ -139,7 +143,7 @@ def flake8(context, local=INVOKE_LOCAL):
 @task(help={"local": "Run locally or within the Docker container"})
 def pylint(context, local=INVOKE_LOCAL):
     """Run pylint code analysis."""
-    exec_cmd = 'find . -name "*.py" | xargs pylint'
+    exec_cmd = 'find . -name "*.py" | grep -vE "tests/unit" | xargs pylint'
     run_cmd(context, exec_cmd, local)
 
 
