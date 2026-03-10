@@ -27,7 +27,5 @@ def pyntc_verify_file(
             * (bool): True if file exists and checksum matches, False otherwise.
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
-    result = pyntc_connection.verify_file(
-        filename, checksum, hashing_algorithm, **kwargs
-    )
+    result = pyntc_connection.verify_file(filename, checksum, hashing_algorithm, **kwargs)
     return Result(host=task.host, result=result, changed=False)
