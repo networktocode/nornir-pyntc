@@ -1,4 +1,10 @@
-# v3.1.0 Release Notes
+# v3.1 Release Notes
+
+## [v3.1.1 - 2026-04-08](https://github.com/networktocode/nornir-pyntc/releases/tag/v3.1.1)
+
+### Added
+
+- [#50](https://github.com/networktocode/nornir-pyntc/pull/50) - Added support for Python 3.14.
 
 ## [3.1.0] 03-2026
 
