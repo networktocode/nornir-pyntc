@@ -13,12 +13,13 @@ platform_to_pyntc_map = {
     "cisco_nxos": "cisco_nxos_nxapi",
     "arista_eos": "arista_eos_eapi",
     "juniper_junos": "juniper_junos_netconf",
-    "cisco_iosxr": "cisco_xr",
+    "cisco_xr": "cisco_iosxr_ssh",
+    "cisco_iosxr": "cisco_iosxr_ssh",
     "ios": "cisco_ios_ssh",
     "nxos": "cisco_nxos_nxapi",
     "eos": "arista_eos_eapi",
     "junos": "juniper_junos_netconf",
-    "iosxr": "cisco_xr",
+    "iosxr": "cisco_iosxr_ssh",
 }
 
 
