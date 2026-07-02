@@ -1,6 +1,6 @@
 """Test Connection."""
 
-from pyntc.devices import IOSDevice
+from pyntc.devices import IOSDevice, NXOSDevice
 
 
 def test_connection_core_setup(nornir_conn, monkeypatch):
@@ -10,6 +10,7 @@ def test_connection_core_setup(nornir_conn, monkeypatch):
         pass
 
     monkeypatch.setattr(IOSDevice, "open", mock_open)
+    monkeypatch.setattr(NXOSDevice, "open", mock_open)
     nxos_conn = nornir_conn.inventory.hosts["router1"].get_connection("pyntc", nornir_conn.config)
     assert nxos_conn.host == "192.168.1.1"
     assert nxos_conn.transport == "http"
