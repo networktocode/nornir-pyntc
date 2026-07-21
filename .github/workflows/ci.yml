@@ -44,7 +44,7 @@ jobs:
   mypy:
     runs-on: "ubuntu-latest"
     env:
-      INVOKE_NETUTILS_LOCAL: "True"
+      INVOKE_NORNIR_PYNTC_LOCAL: "True"
     steps:
       - name: "Check out repository code"
         uses: "actions/checkout@v4"

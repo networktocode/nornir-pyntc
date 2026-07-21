@@ -34,6 +34,7 @@ nornir = "^3.2.0"
 coverage = "*"
 pytest = "*"
 mock = "*"
+mypy = "*"
 pyyaml = "^6.0.1"
 pylint = "^3.1.0"
 yamllint = "^1.35.1"
@@ -73,7 +74,7 @@ griffe = "1.1.1"
 nornir_pyntc = 'nornir_pyntc.cli:main'
 
 [tool.mypy]
-python_version = 3.10
+python_version = "3.10"
 ignore_errors = false
 disallow_untyped_calls = true
 disallow_untyped_defs = true
@@ -162,9 +163,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 python_paths = "./"
-testpaths = [
-    "tests/"
-]
+testpaths = "tests/"
 addopts = "-vv --doctest-modules -p no:warnings --ignore-glob='*mock*'"
 
 [tool.towncrier]

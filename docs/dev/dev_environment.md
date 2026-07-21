@@ -91,6 +91,7 @@ Each command can be executed with `invoke <command>`. Each command also has its 
 ```
   autoformat (a)    Run code autoformatting.
   pylint            Run pylint for the specified name and Python version.
+  mypy              Run mypy to validate typing-hints.
   ruff              Run ruff to perform code formatting and/or linting.
   pytest            Run pytest for the specified name and Python version.
   tests             Run all tests for the specified name and Python version.

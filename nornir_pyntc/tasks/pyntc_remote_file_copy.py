@@ -4,6 +4,7 @@ from typing import Any
 
 from nornir.core.task import Result, Task
 from pyntc.utils.models import FileCopyModel
+
 from nornir_pyntc.connections import CONNECTION_NAME
 
 

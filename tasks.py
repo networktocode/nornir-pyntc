@@ -179,19 +179,12 @@ def coverage(context):
 )
 def pytest(context, pattern=None, label=None):
     """Run pytest test cases."""
-    exec_cmd = (
-        "pytest -vv --doctest-modules nornir_pyntc/ && coverage run --source=nornir_pyntc -m pytest && coverage report"
-    )
-    run_command(context, exec_cmd)
-
-    doc_test_cmd = "pytest -vv --doctest-modules nornir_pyntc/"
-    pytest_cmd = "coverage run --source=nornir_pyntc -m pytest"
+    pytest_cmd = "coverage run --source=nornir_pyntc -m pytest -vv"
     if pattern:
-        pytest_cmd += "".join([f" -k {_pattern}" for _pattern in pattern])
+        pytest_cmd += "".join(f" -k {_pattern}" for _pattern in pattern)
     if label:
-        pytest_cmd += "".join([f" {_label}" for _label in label])
-    coverage_cmd = "coverage report"
-    exec_cmd = " && ".join([doc_test_cmd, pytest_cmd, coverage_cmd])
+        pytest_cmd += "".join(f" {_label}" for _label in label)
+    exec_cmd = " && ".join([pytest_cmd, "coverage report"])
     run_command(context, exec_cmd)
 
 
@@ -248,7 +241,7 @@ def mypy(context):
         context (obj): Used to run specific commands
         local (bool): Define as `True` to execute locally
     """
-    exec_cmd = "mypy ./netutils"
+    exec_cmd = "mypy ./nornir_pyntc"
     run_command(context, exec_cmd)
 
 
