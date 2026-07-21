@@ -301,3 +301,13 @@ development/*.txt
 
 # Invoke overrides
 invoke.yml
+<<<<<<< HEAD
+=======
+
+# Docs
+docs/README.md
+docs/CHANGELOG.md
+public
+/compose.yaml
+/dump.sql
+>>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
