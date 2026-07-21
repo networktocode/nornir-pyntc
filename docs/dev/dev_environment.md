@@ -15,11 +15,7 @@ The [Invoke](http://www.pyinvoke.org/) library is used to provide some helper co
 
 - `local`: a boolean flag indicating if invoke tasks should be run on the host or inside the docker containers (default: False, commands will be run in docker containers)
 
-<<<<<<< HEAD
 Using **Invoke** these configuration options can be overridden using [several methods](https://docs.pyinvoke.org/en/stable/concepts/configuration.html). Perhaps the simplest is setting an environment variable `INVOKE_NORNIR_PYNTC_VARIABLE_NAME` where `VARIABLE_NAME` is the variable you are trying to override. There is an example `invoke.yml` (`invoke.example.yml`) in this directory which can be used as a starting point.
-=======
-Using **Invoke** these configuration options can be overridden using [several methods](https://docs.pyinvoke.org/en/stable/concepts/configuration.html). Perhaps the simplest is setting an environment variable `INVOKE_NORNIR-PYNTC_VARIABLE_NAME` where `VARIABLE_NAME` is the variable you are trying to override. There is an example `invoke.yml` (`invoke.example.yml`) in this directory which can be used as a starting point.
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
 
 ### Docker Development Environment
 
@@ -36,10 +32,6 @@ Once you have Poetry and Docker installed you can run the following commands (in
 ```shell
 poetry shell
 poetry install
-<<<<<<< HEAD
-cp development/creds.example.env development/creds.env
-=======
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
 invoke build
 invoke start
 ```
@@ -53,20 +45,12 @@ To either stop or destroy the development environment use the following options.
 
 ## Poetry
 
-<<<<<<< HEAD
-Poetry is used in lieu of the "virtualenv" commands and is leveraged in both environments. The virtual environment will provide all of the Python packages required to manage the development environment such as **Invoke**. See the [Local Development Environment](#local-poetry-development-environment) section to see how to install nornir-pyntc if you're going to be developing locally (i.e. not using the Docker container).
-=======
 Poetry is used in lieu of the "virtualenv" commands and is leveraged in both environments. The virtual environment will provide all of the Python packages required to manage the development environment such as **Invoke**. See the [Local Development Environment](#full-docker-development-environment) section to see how to install nornir-pyntc if you're going to be developing locally (i.e. not using the Docker container).
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
 
 The `pyproject.toml` file outlines all of the relevant dependencies for the project:
 
 - `tool.poetry.dependencies` - the main list of dependencies.
-<<<<<<< HEAD
-- `tool.poetry.dev-dependencies` - development dependencies, to facilitate linting, testing, and documentation building.
-=======
 - `tool.poetry.group.dev.dependencies` - development dependencies, to facilitate linting, testing, and documentation building.
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
 
 The `poetry shell` command is used to create and enable a virtual environment managed by Poetry, so all commands ran going forward are executed within the virtual environment. This is similar to running the `source venv/bin/activate` command with virtualenvs. To install project dependencies in the virtual environment, you should run `poetry install` - this will install **both** project and development dependencies.
 
@@ -97,36 +81,18 @@ Each command can be executed with `invoke <command>`. Each command also has its 
 ### Utility
 
 ```
-<<<<<<< HEAD
-  cli                Enter the image to perform troubleshooting or dev work.
-  clean-container    Remove stopped containers that source for image `nornir-pyntc:`
-=======
   cli                       Enter the image to perform troubleshooting or dev work.
   clean                     Remove stopped containers that source for image `nornir-pyntc:`
   generate-release-notes    Generate Release Notes using Towncrier.
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
 ```
 
 ### Testing
 
 ```
-<<<<<<< HEAD
-  bandit             Run bandit to validate basic static code security analysis.
-  black              Run black to check that Python files adhere to its style standards.
-  coverage           Run the coverage report against pytest.
-  flake8             Run flake8 to check that Python files adhere to its style standards.
-  mypy               Run mypy to validate typing-hints.
-  pylint             Run pylint code analysis.
-  pydocstyle         Run pydocstyle to validate docstring formatting adheres to NTC defined standards.
-  pytest             Run pytest for the specified name and Python version.
-  tests              Run all tests for the specified name and Python version.
-  yamllint           Run yamllint to validate formatting adheres to NTC defined YAML standards.
-=======
   autoformat (a)    Run code autoformatting.
   pylint            Run pylint for the specified name and Python version.
   ruff              Run ruff to perform code formatting and/or linting.
   pytest            Run pytest for the specified name and Python version.
   tests             Run all tests for the specified name and Python version.
   yamllint          Run yamllint to validate formatting adheres to NTC defined YAML standards.
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
 ```

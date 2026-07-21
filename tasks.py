@@ -1,22 +1,11 @@
 """Tasks for use with Invoke."""
 
 import os
-<<<<<<< HEAD
-import sys
-
-from invoke import task
-
-try:
-    import toml
-except ImportError:
-    sys.exit("Please make sure to `pip install toml` or enable the Poetry shell and run `poetry install`.")
-=======
 import re
 from pathlib import Path
 
 from invoke import Collection, Exit
 from invoke import task as invoke_task
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
 
 
 def is_truthy(arg):
@@ -40,35 +29,17 @@ def is_truthy(arg):
     raise ValueError(f"Invalid truthy value: `{arg}`")
 
 
-<<<<<<< HEAD
-PYPROJECT_CONFIG = toml.load("pyproject.toml")
-TOOL_CONFIG = PYPROJECT_CONFIG["tool"]["poetry"]
-
-# Can be set to a separate Python version to be used for launching or building image
-PYTHON_VER = os.getenv("PYTHON_VER", "3.10")
-# Name of the docker image/image
-IMAGE_NAME = os.getenv("IMAGE_NAME", TOOL_CONFIG["name"])
-# Tag for the image
-IMAGE_VER = os.getenv("IMAGE_VER", f"{TOOL_CONFIG['version']}-py{PYTHON_VER}")
-# Gather current working directory for Docker commands
-PWD = os.getcwd()
-# Local or Docker execution provide "local" to run locally without docker execution
-INVOKE_LOCAL = is_truthy(os.getenv("INVOKE_LOCAL", False))  # pylint: disable=W1508
-
-
-def run_cmd(context, exec_cmd, local=INVOKE_LOCAL, port=None):
-=======
 # Use pyinvoke configuration for default values, see http://docs.pyinvoke.org/en/stable/concepts/configuration.html
-# Variables may be overwritten in invoke.yml or by the environment variables INVOKE_NORNIR-PYNTC_xxx
+# Variables may be overwritten in invoke.yml or by the environment variables INVOKE_NORNIR_PYNTC_xxx
 namespace = Collection("nornir_pyntc")
 namespace.configure(
     {
         "nornir_pyntc": {
             "project_name": "nornir_pyntc",
             "python_ver": "3.10",
-            "local": is_truthy(os.getenv("INVOKE_NORNIR-PYNTC_LOCAL", "false")),
+            "local": is_truthy(os.getenv("INVOKE_NORNIR_PYNTC_LOCAL", "false")),
             "image_name": "nornir_pyntc",
-            "image_ver": os.getenv("INVOKE_NORNIR-PYNTC_IMAGE_VER", "latest"),
+            "image_ver": os.getenv("INVOKE_NORNIR_PYNTC_IMAGE_VER", "latest"),
             "pwd": Path(__file__).parent,
         }
     }
@@ -96,33 +67,17 @@ def task(function=None, *args, **kwargs):
 
 
 def run_command(context, exec_cmd, port=None, rm=True):
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
     """Wrapper to run the invoke task commands.
 
     Args:
         context ([invoke.task]): Invoke task object.
         exec_cmd ([str]): Command to run.
-<<<<<<< HEAD
-        local (bool): Define as `True` to execute locally
-        port (int): Used to serve local docs.
-=======
         port (int): Used to serve local docs.
         rm (bool): Whether to remove the container after running the command.
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
 
     Returns:
         result (obj): Contains Invoke result from running task.
     """
-<<<<<<< HEAD
-    if is_truthy(local):
-        print(f"LOCAL - Running command {exec_cmd}")
-        result = context.run(exec_cmd, pty=True)
-    else:
-        print(f"DOCKER - Running command: {exec_cmd} container: {IMAGE_NAME}:{IMAGE_VER}")
-        if port:
-            result = context.run(
-                f"docker run -it -p {port} -v {PWD}:/local {IMAGE_NAME}:{IMAGE_VER} sh -c '{exec_cmd}'",
-=======
     if is_truthy(context.nornir_pyntc.local):
         print(f"LOCAL - Running command {exec_cmd}")
         result = context.run(exec_cmd, pty=True)
@@ -133,28 +88,20 @@ def run_command(context, exec_cmd, port=None, rm=True):
         if port:
             result = context.run(
                 f"docker run -it {'--rm' if rm else ''} -p {port} -v {context.nornir_pyntc.pwd}:/local {context.nornir_pyntc.image_name}:{context.nornir_pyntc.image_ver} sh -c '{exec_cmd}'",
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
                 pty=True,
             )
         else:
             result = context.run(
-<<<<<<< HEAD
-                f"docker run -it -v {PWD}:/local {IMAGE_NAME}:{IMAGE_VER} sh -c '{exec_cmd}'",
-=======
                 f"docker run -it {'--rm' if rm else ''} -v {context.nornir_pyntc.pwd}:/local {context.nornir_pyntc.image_name}:{context.nornir_pyntc.image_ver} sh -c '{exec_cmd}'",
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
                 pty=True,
             )
 
     return result
 
 
-<<<<<<< HEAD
-=======
 # ------------------------------------------------------------------------------
 # BUILD
 # ------------------------------------------------------------------------------
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
 @task(
     help={
         "cache": "Whether to use Docker's cache when building images (default enabled)",
@@ -164,13 +111,8 @@ def run_command(context, exec_cmd, port=None, rm=True):
 )
 def build(context, cache=True, force_rm=False, hide=False):
     """Build a Docker image."""
-<<<<<<< HEAD
-    print(f"Building image {IMAGE_NAME}:{IMAGE_VER}")
-    command = f"docker build --tag {IMAGE_NAME}:{IMAGE_VER} --build-arg PYTHON_VER={PYTHON_VER} -f Dockerfile ."
-=======
     print(f"Building image {context.nornir_pyntc.image_name}:{context.nornir_pyntc.image_ver}")
     command = f"docker build --tag {context.nornir_pyntc.image_name}:{context.nornir_pyntc.image_ver} --build-arg PYTHON_VER={context.nornir_pyntc.python_ver} -f Dockerfile ."
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
 
     if not cache:
         command += " --no-cache"
@@ -179,9 +121,6 @@ def build(context, cache=True, force_rm=False, hide=False):
 
     result = context.run(command, hide=hide)
     if result.exited != 0:
-<<<<<<< HEAD
-        print(f"Failed to build image {IMAGE_NAME}:{IMAGE_VER}\nError: {result.stderr}")
-=======
         print(
             f"Failed to build image {context.nornir_pyntc.image_name}:{context.nornir_pyntc.image_ver}\nError: {result.stderr}"
         )
@@ -205,23 +144,14 @@ def generate_packages(context):
 def lock(context, check=False):
     """Generate poetry.lock inside the library container."""
     run_command(context, f"poetry {'check' if check else 'lock --no-update'}")
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
 
 
 @task
 def clean(context):
     """Remove the project specific image."""
-<<<<<<< HEAD
-    print(f"Attempting to forcefully remove image {IMAGE_NAME}:{IMAGE_VER}")
-    context.run(f"docker rmi {IMAGE_NAME}:{IMAGE_VER} --force")
-    print(f"Successfully removed image {IMAGE_NAME}:{IMAGE_VER}")
-=======
-    print(
-        f"Attempting to forcefully remove image {context.nornir_pyntc.image_name}:{context.nornir_pyntc.image_ver}"
-    )
+    print(f"Attempting to forcefully remove image {context.nornir_pyntc.image_name}:{context.nornir_pyntc.image_ver}")
     context.run(f"docker rmi {context.nornir_pyntc.image_name}:{context.nornir_pyntc.image_ver} --force")
     print(f"Successfully removed image {context.nornir_pyntc.image_name}:{context.nornir_pyntc.image_ver}")
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
 
 
 @task
@@ -231,67 +161,6 @@ def rebuild(context):
     build(context, cache=False)
 
 
-<<<<<<< HEAD
-@task(help={"local": "Run locally or within the Docker container"})
-def pytest(context, local=INVOKE_LOCAL):
-    """Run pytest test cases."""
-    exec_cmd = "pytest"
-    run_cmd(context, exec_cmd, local)
-
-
-@task(help={"local": "Run locally or within the Docker container"})
-def black(context, local=INVOKE_LOCAL):
-    """Run black to check that Python files adherence to black standards."""
-    exec_cmd = "black --check --diff ."
-    run_cmd(context, exec_cmd, local)
-
-
-@task(help={"local": "Run locally or within the Docker container"})
-def flake8(context, local=INVOKE_LOCAL):
-    """Run flake8 code analysis."""
-    exec_cmd = "flake8 ."
-    run_cmd(context, exec_cmd, local)
-
-
-@task(help={"local": "Run locally or within the Docker container"})
-def pylint(context, local=INVOKE_LOCAL):
-    """Run pylint code analysis."""
-    exec_cmd = 'find . -name "*.py" | grep -vE "tests/unit" | xargs pylint'
-    run_cmd(context, exec_cmd, local)
-
-
-@task(help={"local": "Run locally or within the Docker container"})
-def yamllint(context, local=INVOKE_LOCAL):
-    """Run yamllint to validate formatting adheres to NTC defined YAML standards."""
-    exec_cmd = "yamllint ."
-    run_cmd(context, exec_cmd, local)
-
-
-@task(help={"local": "Run locally or within the Docker container"})
-def pydocstyle(context, local=INVOKE_LOCAL):
-    """Run pydocstyle to validate docstring formatting adheres to NTC defined standards."""
-    exec_cmd = "pydocstyle ."
-    run_cmd(context, exec_cmd, local)
-
-
-@task(help={"local": "Run locally or within the Docker container"})
-def bandit(context, local=INVOKE_LOCAL):
-    """Run bandit to validate basic static code security analysis."""
-    exec_cmd = "bandit --recursive ./ --configfile .bandit.yml"
-    run_cmd(context, exec_cmd, local)
-
-
-@task(help={"local": "Run locally or within the Docker container"})
-def mypy(context, local=INVOKE_LOCAL):
-    """Run mypy to validate typing-hints.
-
-    Args:
-        context (obj): Used to run specific commands
-        local (bool): Define as `True` to execute locally
-    """
-    exec_cmd = "mypy ./nornir_pyntc"
-    run_cmd(context, exec_cmd, local)
-=======
 @task
 def coverage(context):
     """Run the coverage report against pytest."""
@@ -310,7 +179,9 @@ def coverage(context):
 )
 def pytest(context, pattern=None, label=None):
     """Run pytest test cases."""
-    exec_cmd = "pytest -vv --doctest-modules nornir_pyntc/ && coverage run --source=nornir_pyntc -m pytest && coverage report"
+    exec_cmd = (
+        "pytest -vv --doctest-modules nornir_pyntc/ && coverage run --source=nornir_pyntc -m pytest && coverage report"
+    )
     run_command(context, exec_cmd)
 
     doc_test_cmd = "pytest -vv --doctest-modules nornir_pyntc/"
@@ -370,6 +241,18 @@ def ruff(context, action=None, target=None, fix=False, output_format="concise"):
 
 
 @task
+def mypy(context):
+    """Run mypy to validate typing-hints.
+
+    Args:
+        context (obj): Used to run specific commands
+        local (bool): Define as `True` to execute locally
+    """
+    exec_cmd = "mypy ./netutils"
+    run_command(context, exec_cmd)
+
+
+@task
 def pylint(context):
     """Run pylint for the specified name and Python version.
 
@@ -389,29 +272,10 @@ def yamllint(context):
     """
     exec_cmd = "yamllint ."
     run_command(context, exec_cmd)
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
 
 
 @task
 def cli(context):
-<<<<<<< HEAD
-    """Enter the image to perform troubleshooting or dev work."""
-    dev = f"docker run -it -v {PWD}:/local {IMAGE_NAME}:{IMAGE_VER} /bin/bash"
-    context.run(f"{dev}", pty=True)
-
-
-@task(help={"local": "Run locally or within the Docker container"})
-def tests(context, local=INVOKE_LOCAL):
-    """Run all tests for this repository."""
-    black(context, local)
-    flake8(context, local)
-    pylint(context, local)
-    yamllint(context, local)
-    pydocstyle(context, local)
-    bandit(context, local)
-    mypy(context, local)
-    pytest(context, local)
-=======
     """Enter the image to perform troubleshooting or dev work.
 
     Args:
@@ -439,6 +303,8 @@ def tests(context, lint_only=False):
     ruff(context)
     print("Running yamllint...")
     yamllint(context)
+    print("Running mypy...")
+    mypy(context)
     print("Running poetry check...")
     lock(context, check=True)
     print("Running pylint...")
@@ -448,17 +314,10 @@ def tests(context, lint_only=False):
     if not lint_only:
         print("Running unit tests...")
         pytest(context)
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
     print("All tests have passed!")
 
 
 @task
-<<<<<<< HEAD
-def docs(context, local=INVOKE_LOCAL):
-    """Build and serve docs locally for development."""
-    exec_cmd = "mkdocs serve -v --dev-addr=0.0.0.0:8001"
-    run_cmd(context, exec_cmd, local, port="8001:8001")
-=======
 def build_and_check_docs(context):
     """Build documentation and test the configuration."""
     command = "mkdocs build --no-directory-urls --strict"
@@ -502,4 +361,3 @@ def generate_release_notes(context, version="", date=""):
         command += f" --date {date}"
     # Due to issues with git repo ownership in the containers, this must always run locally.
     context.run(command)
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)

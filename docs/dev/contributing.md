@@ -2,19 +2,6 @@
 
 Pull requests are welcomed and automatically built and tested against multiple versions of Python through GitHub Actions. 
 
-<<<<<<< HEAD
-Except for unit tests, testing is only supported on Python 3.9.
-
-The project is packaged with a light development environment based on `Docker` to help with the local development of the project and to run tests within  GitHub Actions.
-
-The project is following Network to Code software development guidelines and are leveraging the following:
-
-- Black, Pylint, Bandit, flake8, and pydocstyle for Python linting and formatting.
-- pytest, coverage, and unittest for unit tests.
-
-Documentation is built using [mkdocs](https://www.mkdocs.org/). The [Docker based development environment](dev_environment.md#docker-development-environment) can be started by running `invoke docs` [http://localhost:8001](http://localhost:8001) that auto-refreshes when you make any changes to your local files.
-
-=======
 Except for unit tests, testing is only supported on Python 3.13.
 
 The project is packaged with a light development environment based on `Docker` to help with the local development of the project and to run tests within GitHub Actions.
@@ -55,7 +42,6 @@ All pull requests to `next` or `develop` must include a changelog fragment file 
     Changed release notes generation.
     ```
 
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
 ## Branching Policy
 
 The branching policy includes the following tenets:
@@ -66,19 +52,11 @@ The branching policy includes the following tenets:
 - PRs intended to address bug fixes and security patches should be sourced from the develop branch.
 - PRs intended to add new features that break backward compatibility should be discussed before a PR is created.
 
-<<<<<<< HEAD
-Nornir-Pyntc will observe semantic versioning, as of 1.0. This may result in an quick turn around in minor versions to keep pace with an ever growing feature set.
-
-## Release Policy
-
-Nornir-Pyntc has currently no intended scheduled release schedule, and will release new features in minor versions.
-=======
 Nornir Pyntc will observe Semantic Versioning, as of 1.0. This may result in an quick turn around in minor versions to keep pace with an ever growing feature set.
 
 ## Release Policy
 
 Nornir Pyntc has currently no intended scheduled release schedule, and will release new features in minor versions.
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
 
 When a new release is created the following should happen.
 
@@ -96,8 +74,4 @@ When a new release is created the following should happen.
 - A post release PR is created with.
     - Change the version from `<major>.<minor>.<patch>` to `<major>.<minor>.<patch + 1>-beta` pyproject.toml.
     - Set the PR to the `develop`.
-<<<<<<< HEAD
     - Once tests pass, merge.
-=======
-    - Once tests pass, merge.
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)

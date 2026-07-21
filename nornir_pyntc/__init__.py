@@ -1,7 +1,7 @@
-<<<<<<< HEAD
 """Initialize Connection and Tasks."""
 
 from importlib import metadata
+
 from nornir_pyntc.connections import CONNECTION_NAME, Pyntc
 from nornir_pyntc.tasks import pyntc_config, pyntc_file_copy, pyntc_install_os, pyntc_reboot, pyntc_save, pyntc_show
 
@@ -17,10 +17,3 @@ __all__ = (
     "pyntc_reboot",
     "pyntc_save",
 )
-=======
-"""Initialization file for library."""
-
-from importlib import metadata
-
-__version__ = metadata.version(__name__)
->>>>>>> 5442b74 (Cookie initially baked targeting develop by NetworkToCode Cookie Drift Manager Tool)
