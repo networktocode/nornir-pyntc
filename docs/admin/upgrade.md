@@ -3,5 +3,5 @@
 Upgrade from PyPI.
 
 ```bash
-$ pip install nornir-pyntc --upgrade
+pip install nornir-pyntc --upgrade
 ```

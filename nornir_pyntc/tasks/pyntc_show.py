@@ -3,6 +3,7 @@
 from typing import Any, Union
 
 from nornir.core.task import Result, Task
+
 from nornir_pyntc.connections import CONNECTION_NAME
 
 
@@ -10,6 +11,7 @@ def pyntc_show(task: Task, command: Union[str, list], **kwargs: Any) -> Result:
     """Send a non-configuration command.
 
     Args:
+        task (Task): Nornir Task object.
         command (str|list): The command to send to the device.
         kwargs (Any): Additional keyword args to send.
 
