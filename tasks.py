@@ -30,16 +30,16 @@ def is_truthy(arg):
 
 
 # Use pyinvoke configuration for default values, see http://docs.pyinvoke.org/en/stable/concepts/configuration.html
-# Variables may be overwritten in invoke.yml or by the environment variables INVOKE_NORNIR-PYNTC_xxx
+# Variables may be overwritten in invoke.yml or by the environment variables INVOKE_NORNIR_PYNTC_xxx
 namespace = Collection("nornir_pyntc")
 namespace.configure(
     {
         "nornir_pyntc": {
             "project_name": "nornir_pyntc",
             "python_ver": "3.10",
-            "local": is_truthy(os.getenv("INVOKE_NORNIR-PYNTC_LOCAL", "false")),
+            "local": is_truthy(os.getenv("INVOKE_NORNIR_PYNTC_LOCAL", "false")),
             "image_name": "nornir_pyntc",
-            "image_ver": os.getenv("INVOKE_NORNIR-PYNTC_IMAGE_VER", "latest"),
+            "image_ver": os.getenv("INVOKE_NORNIR_PYNTC_IMAGE_VER", "latest"),
             "pwd": Path(__file__).parent,
         }
     }

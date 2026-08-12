@@ -11,7 +11,7 @@ To avoid extra work and temporary links, make sure that publishing docs (or merg
 -->
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/networktocode/nornir-pyntc/develop/docs/images/icon-Nornir-Pyntc.png" class="logo" height="200px">
+  <img src="https://raw.githubusercontent.com/networktocode/nornir-pyntc/develop/docs/images/icon-nornir-pyntc.png" class="logo" height="200px">
   <br>
   <a href="https://github.com/networktocode/nornir-pyntc/actions"><img src="https://github.com/networktocode/nornir-pyntc/actions/workflows/ci.yml/badge.svg?branch=main"></a>
   <a href="https://nornir-pyntc.readthedocs.io/en/latest/"><img src="https://readthedocs.org/projects/nornir-pyntc/badge/"></a>
