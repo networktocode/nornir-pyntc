@@ -1,6 +1,10 @@
 [tool.poetry]
 name = "nornir-pyntc"
+<<<<<<< HEAD
 version = "3.2.1a0"
+=======
+version = "0.1.0a0"
+>>>>>>> c912607 (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
 description = "pyntc plugin for Nornir"
 authors = ["Network to Code, LLC <opensource@networktocode.com>"]
 readme = "README.md"
@@ -16,10 +20,16 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
+
 include = [
-    "LICENSE",
-    "README.md",
+    # Poetry by default will exclude files that are in .gitignore
+    { path = "nornir-pyntc/static/nornir-pyntc/docs/**/*", format = ["sdist", "wheel"] }
+]
+
+packages = [
+    { include = "nornir_pyntc" },
 ]
 
 <<<<<<< HEAD
@@ -33,8 +43,12 @@ packages = [
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.15"
+<<<<<<< HEAD
 pyntc = ">=2.1.0"
 nornir = "^3.2.0"
+=======
+click = "*"
+>>>>>>> c912607 (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
 
 [tool.poetry.group.dev.dependencies]
 coverage = "~7.15.4"
@@ -175,7 +189,7 @@ addopts = "-vv --doctest-modules -p no:warnings --ignore-glob='*mock*'"
 package = "nornir_pyntc"
 directory = "changes"
 filename = "docs/admin/release_notes/version_X.Y.md"
-template = "towncrier_template.j2"
+template = "development/towncrier_template.j2"
 start_string = "<!-- towncrier release notes start -->"
 issue_format = "[#{issue}](https://github.com/networktocode/nornir-pyntc/issues/{issue})"
 
