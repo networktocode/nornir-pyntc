@@ -63,12 +63,17 @@ jobs:
     needs: "build"
     environment: "pypi"
 <<<<<<< HEAD
+<<<<<<< HEAD
     # IMPORTANT: this permission is mandatory for trusted publishing.
     permissions:
 =======
     permissions:
       # IMPORTANT: this permission is mandatory for Trusted Publishing
 >>>>>>> c912607 (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
+=======
+    permissions:
+      # IMPORTANT: this permission is mandatory for Trusted Publishing
+>>>>>>> 5f0d71c (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
       id-token: "write"
     steps:
       - name: "Retrieve built package from cache"
@@ -81,6 +86,7 @@ jobs:
         uses: "pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e"  # v1.13.0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         ## Used for networktocode org since trusted publisher isn't supported for GitHub Plan.
         with:
           user: "__token__"
@@ -90,6 +96,8 @@ jobs:
 >>>>>>> 832826f (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
 =======
 >>>>>>> c912607 (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
+=======
+>>>>>>> 5f0d71c (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
 
   slack-notify:
     needs:

@@ -33,10 +33,14 @@ This document describes all new features and changes in the release `1.0`. The f
 - Changes to compatibility with Nautobot and/or other apps, libraries etc.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ## [v1.0.0] - 2026-08-12
 =======
 ## [v1.0.0] - 2026-08-14
 >>>>>>> c912607 (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
+=======
+## [v1.0.0] - 2026-08-26
+>>>>>>> 5f0d71c (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
 
 ### Added
 

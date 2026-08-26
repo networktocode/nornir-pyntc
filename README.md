@@ -3,6 +3,7 @@
 <p align="center">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <img src="https://raw.githubusercontent.com/networktocode/nornir-pyntc/develop/docs/images/nornir_pyntc_logo.png" class="logo" height="200px">
 =======
   <img src="https://raw.githubusercontent.com/networktocode/nornir-pyntc/develop/docs/images/icon-nornir-pyntc.png" class="logo" height="200px">
@@ -10,6 +11,9 @@
 =======
   <img src="https://raw.githubusercontent.com/networktocode/nornir-pyntc/develop/docs/images/icon-nornir-pyntc.png" class="logo" height="200px">
 >>>>>>> c912607 (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
+=======
+  <img src="https://raw.githubusercontent.com/networktocode/nornir-pyntc/develop/docs/images/icon-nornir-pyntc.png" class="logo" height="200px">
+>>>>>>> 5f0d71c (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
   <br>
   <a href="https://github.com/networktocode/nornir-pyntc/actions"><img src="https://github.com/networktocode/nornir-pyntc/actions/workflows/ci.yml/badge.svg?branch=main"></a>
   <a href="https://nornir-pyntc.readthedocs.io/en/latest"><img src="https://readthedocs.org/projects/nornir-pyntc/badge/"></a>
