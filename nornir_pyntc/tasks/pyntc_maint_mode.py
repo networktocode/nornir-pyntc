@@ -19,5 +19,5 @@ def pyntc_maint_mode(task: Task, **kwargs: Any) -> Result:
             (bool): True if state transition is successful.
     """
     pyntc_connection = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
-    result = pyntc_connection.maint_mode(**kwargs)
+    result = pyntc_connection.maintenance_mode(**kwargs)
     return Result(host=task.host, result=result, changed=True)
