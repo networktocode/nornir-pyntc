@@ -3,6 +3,7 @@ name = "nornir-pyntc"
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 version = "3.2.1a0"
 =======
 version = "0.1.0a0"
@@ -13,6 +14,9 @@ version = "0.1.0a0"
 =======
 version = "0.1.0a0"
 >>>>>>> 8aa226d (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
+=======
+version = "0.1.0a0"
+>>>>>>> 60d3640 (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
 description = "pyntc plugin for Nornir"
 authors = ["Network to Code, LLC <opensource@networktocode.com>"]
 readme = "README.md"
@@ -36,8 +40,15 @@ include = [
     { path = "nornir-pyntc/static/nornir-pyntc/docs/**/*", format = ["sdist", "wheel"] }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
+=======
+]
+
+packages = [
+    { include = "nornir_pyntc" },
+>>>>>>> 60d3640 (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
 ]
 
 packages = [
@@ -68,6 +79,7 @@ python = ">=3.10,<3.15"
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 pyntc = ">=2.1.0"
 nornir = "^3.2.0"
 =======
@@ -75,6 +87,8 @@ nornir = "^3.2.0"
 >>>>>>> 5f0d71c (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
 =======
 >>>>>>> 8aa226d (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
+=======
+>>>>>>> 60d3640 (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
 click = "*"
 >>>>>>> c912607 (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
 
