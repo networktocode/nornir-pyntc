@@ -36,23 +36,7 @@ namespace.configure(
     {
         "nornir_pyntc": {
             "project_name": "nornir_pyntc",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "python_ver": "3.10",
-=======
             "python_ver": "3.14",
->>>>>>> c912607 (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
-=======
-            "python_ver": "3.14",
->>>>>>> 5f0d71c (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
-=======
-            "python_ver": "3.14",
->>>>>>> 8aa226d (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
-=======
-            "python_ver": "3.14",
->>>>>>> 60d3640 (Cookie updated targeting develop by NetworkToCode Cookie Drift Manager Tool)
             "local": is_truthy(os.getenv("INVOKE_NORNIR_PYNTC_LOCAL", "false")),
             "image_name": "nornir_pyntc",
             "image_ver": os.getenv("INVOKE_NORNIR_PYNTC_IMAGE_VER", "latest"),
