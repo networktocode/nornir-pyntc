@@ -4,7 +4,7 @@ This document describes all new features and changes in the release. The format 
 
 ## Release Overview
 
-- Major features or milestones
+- Added a method to validate the use of maintenance mode for Arista.
 
 <!-- towncrier release notes start -->
 
@@ -16,5 +16,4 @@ This document describes all new features and changes in the release. The format 
 
 ### Housekeeping
 
-- Rebaked from the cookie `main` most recent cookie.
-- Rebaked from the cookie `main`.
+- Rebaked from NTC python cookiecutter.
