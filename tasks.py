@@ -179,12 +179,13 @@ def coverage(context):
 )
 def pytest(context, pattern=None, label=None):
     """Run pytest test cases."""
-    pytest_cmd = "coverage run --source=nornir_pyntc -m pytest -vv"
+    pytest_cmd = "coverage run --source=nornir_pyntc -m pytest"
     if pattern:
-        pytest_cmd += "".join(f" -k {_pattern}" for _pattern in pattern)
+        pytest_cmd += "".join([f" -k {_pattern}" for _pattern in pattern])
     if label:
-        pytest_cmd += "".join(f" {_label}" for _label in label)
-    exec_cmd = " && ".join([pytest_cmd, "coverage report"])
+        pytest_cmd += "".join([f" {_label}" for _label in label])
+    coverage_cmd = "coverage report"
+    exec_cmd = " && ".join([pytest_cmd, coverage_cmd])
     run_command(context, exec_cmd)
 
 
