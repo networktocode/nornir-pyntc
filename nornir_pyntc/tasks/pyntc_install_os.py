@@ -19,6 +19,7 @@ def pyntc_install_os(
     """Installs the prescribed Network OS, which must be present before issuing this command.
 
     Args:
+        task (Task): Nornir Task object.
         image_name (str): Name of the IOS image to boot into
         kwargs (Any): Additional keyword args.
 

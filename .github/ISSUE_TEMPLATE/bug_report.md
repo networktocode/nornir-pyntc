@@ -4,7 +4,7 @@ about: Report a reproducible bug in the current release of nornir-pyntc
 ---
 
 ### Environment
-* Python version:  <!-- Example: 3.7.7 -->
+* Python version:  <!-- Example: 3.10 -->
 * nornir-pyntc version:  <!-- Example: 1.0.0 -->
 
 <!-- What did you expect to happen? -->

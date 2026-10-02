@@ -2,6 +2,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 from nornir.core.task import Result, Task
+
 from nornir_pyntc.tasks.pyntc_reboot import pyntc_reboot
 
 # Dummy constants and objects
