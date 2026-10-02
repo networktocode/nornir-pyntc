@@ -47,7 +47,6 @@ from nornir import InitNornir
 
 # Specific nornir-pytnc imports.
 # Connection plugin import
-from nornir_pyntc.connections.pyntc_connection import Pyntc
 # Task plugin import for running show commands.
 from nornir_pyntc.tasks.pyntc_show import pyntc_show
 
@@ -56,17 +55,18 @@ from nornir_utils.plugins.functions import print_result
 
 nr = InitNornir(config_file="config.yml")
 
+
 def task_manages_connection_manually(task):
     task.host.open_connection("pyntc", configuration=task.nornir.config)
     result = nr.run(task=pyntc_show, command="show version")
     task.host.close_connection("pyntc")
+
 
 manual_result = nr.run(
     task=task_manages_connection_manually,
 )
 
 print_result(manual_result)
-
 ```
 
 For more details see the section on manual connection handling in the [Nornir Documentation](https://nornir.readthedocs.io/en/latest/howto/handling_connections.html#Manually).
