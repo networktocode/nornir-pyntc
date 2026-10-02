@@ -128,11 +128,12 @@ nav:
       - Uninstall: "admin/uninstall.md"
       - Release Notes:
           - "admin/release_notes/index.md"
-          - v1.0.0: "admin/release_notes/version_1.0.md"
-          - v2.0.0: "admin/release_notes/version_2.0.md"
-          - v3.0.0: "admin/release_notes/version_3.0.md"
-          - v3.1.0: "admin/release_notes/version_3.1.md"
-          - v3.2.0: "admin/release_notes/version_3.2.md"
+          - v3.3: "admin/release_notes/version_3.3.md"
+          - v3.2: "admin/release_notes/version_3.2.md"
+          - v3.1: "admin/release_notes/version_3.1.md"
+          - v3.0: "admin/release_notes/version_3.0.md"
+          - v2.0: "admin/release_notes/version_2.0.md"
+          - v1.0: "admin/release_notes/version_1.0.md"
   - Developer Guide:
       - Extending the Library: "dev/extending.md"
       - Contributing to the Library: "dev/contributing.md"
