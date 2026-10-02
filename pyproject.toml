@@ -16,7 +16,9 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
+
 include = [
     "LICENSE",
     "README.md",
@@ -167,10 +169,10 @@ testpaths = "tests/"
 addopts = "-vv --doctest-modules -p no:warnings --ignore-glob='*mock*'"
 
 [tool.towncrier]
-package = "nornir-pyntc"
+package = "nornir_pyntc"
 directory = "changes"
-filename = "docs/admin/release_notes/version_X.Y.md"
-template = "towncrier_template.j2"
+filename = "docs/admin/release_notes/version_3.2.md"
+template = "development/towncrier_template.j2"
 start_string = "<!-- towncrier release notes start -->"
 issue_format = "[#{issue}](https://github.com/networktocode/nornir-pyntc/issues/{issue})"
 
